@@ -12,7 +12,7 @@ Page({
     queryResult: '',
   },
 
-  onLoad: function(options) {
+  onLoad: function (options) {
     if (app.globalData.openid) {
       this.setData({
         openid: app.globalData.openid
@@ -20,31 +20,31 @@ Page({
     }
   },
 
-  onAdd: function() {
-    const db = wx.cloud.database()
-    db.collection('counters').add({
-      data: {
-        count: 1
-      },
-      success: res => {
-        在返回结果中会包含新创建的记录的_id
-        this.setData({
-          counterId: res._id,
-          count: 1
-        })
-        wx.showToast({
-          title: '新增记录成功',
-        })
-        console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '新增记录失败'
-        })
-        console.error('[数据库] [新增记录] 失败：', err)
-      }
-    })
+  onAdd: function () {
+     const db = wx.cloud.database()
+     db.collection('counters').add({
+       data: {
+         count: 1
+       },
+       success: res => {
+          在返回结果中会包含新创建的记录的_id
+         this.setData({
+           counterId: res._id,
+           count: 1
+         })
+         wx.showToast({
+           title: '新增记录成功',
+         })
+         console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
+       },
+       fail: err => {
+         wx.showToast({
+           icon: 'none',
+           title: '新增记录失败'
+         })
+         console.error('[数据库] [新增记录] 失败：', err)
+       }
+     })
   },
 
   onQuery: function() {
@@ -135,7 +135,7 @@ Page({
     // }
   },
 
-  nextStep: function() {
+  nextStep: function () {
     // 在第一步，需检查是否有 openid，如无需获取
     if (this.data.step === 1 && !this.data.openid) {
       wx.cloud.callFunction({
@@ -169,7 +169,7 @@ Page({
     }
   },
 
-  prevStep: function() {
+  prevStep: function () {
     this.setData({
       step: this.data.step - 1
     })
