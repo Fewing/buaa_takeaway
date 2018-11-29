@@ -8,7 +8,19 @@ Page({
     logged: false,
     takeSession: false,
     requestResult: '',
-    test: "hello"
+    test_text:"等待文字"
+  },
+  text_submit:function(e)
+  {
+    console.log(e.detail.value.text)
+    db_t.collection('test').add(
+      {
+        data: {
+          text: e.detail.value.text,
+          createTime: db_t.serverDate(),
+        }
+      }
+    )
   },
   test_db:function()
   {
@@ -32,17 +44,24 @@ Page({
         }
       }
     )*/
-    db_t.collection('test').doc('W__bxdWuZ2FdIR16').get({
-      success: function (res) {
-        // res.data 包含该记录的数据
-        console.log(res.data.description)
-      }
-    })
     this.setData(
       {
         test:"world",
       }
     )
+  },
+  pull_db: function()
+  {
+    db_t.collection('test').where(
+      {
+        text:"123"
+      } 
+    ).orderBy('createTime','desc')
+    .get()
+      .then(order_list => {
+      console.log(order_list.data)
+    })
+    .catch(console.error);
   },
   onLoad: function() {
     if (!wx.cloud) {
