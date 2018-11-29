@@ -1,15 +1,22 @@
 //index.js
 const app = getApp()
-
 Page({
   data: {
     avatarUrl: './user-unlogin.png',
     userInfo: {},
     logged: false,
     takeSession: false,
-    requestResult: ''
+    requestResult: '',
+    test: "hello"
   },
-
+  test_db:function()
+  {
+    this.setData(
+      {
+        test:"world",
+      }
+    )
+  },
   onLoad: function() {
     if (!wx.cloud) {
       wx.redirectTo({
