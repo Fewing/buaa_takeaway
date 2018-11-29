@@ -1,5 +1,6 @@
 //index.js
 const app = getApp()
+const db_t = wx.cloud.database()
 Page({
   data: {
     avatarUrl: './user-unlogin.png',
@@ -11,6 +12,32 @@ Page({
   },
   test_db:function()
   {
+    /*db_t.collection('test').add(
+      {
+        data: {
+          // _id: 'todo-identifiant-aleatoire', // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
+          description: "learn cloud database",
+          due: new Date("2018-09-01"),
+          tags: [
+            "cloud",
+            "database"
+          ],
+          // 为待办事项添加一个地理位置（113°E，23°N）
+          location: new db_t.Geo.Point(113, 23),
+          done: false
+        },
+        success: function (res) {
+          // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+          console.log(res)
+        }
+      }
+    )*/
+    db_t.collection('test').doc('W__bxdWuZ2FdIR16').get({
+      success: function (res) {
+        // res.data 包含该记录的数据
+        console.log(res.data.description)
+      }
+    })
     this.setData(
       {
         test:"world",
