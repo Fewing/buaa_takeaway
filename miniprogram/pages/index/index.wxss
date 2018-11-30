@@ -134,10 +134,3 @@ page {
   line-height: 36rpx;
   word-break: break-all;
 }
-.text_uploader
-{
-  width: 100%;
-  height: 600rpx;
-  color:black;
-  background-color: white;
-}

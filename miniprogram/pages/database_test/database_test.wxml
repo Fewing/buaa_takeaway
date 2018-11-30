@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="container text_uploader">
+    <form bindsubmit="text_submit">
+      <textarea name="text"></textarea>
+      <button form-type='submit'>提交</button>
+      <button form-type='reset'>重置</button>
+    </form>
+  </view>
+  <view>
+    <button bindtap='pull_db'>拉取</button>
+    <text>{{test_text}}</text>
+  </view>
+</view>

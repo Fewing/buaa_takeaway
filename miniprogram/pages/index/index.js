@@ -1,76 +1,21 @@
 //index.js
 const app = getApp()
-const db_t = wx.cloud.database()
+const db = wx.cloud.database()
 Page({
   data: {
     avatarUrl: './user-unlogin.png',
     userInfo: {},
     logged: false,
     takeSession: false,
-    requestResult: '',
-    test_text:"等待文字"
+    requestResult: ''
   },
-  text_submit:function(e)
-  {
-    console.log(e.detail.value.text)
-    db_t.collection('test').add(
-      {
-        data: {
-          text: e.detail.value.text,
-          createTime: db_t.serverDate(),
-        }
-      }
-    )
-  },
-  test_db:function()
-  {
-    /*db_t.collection('test').add(
-      {
-        data: {
-          // _id: 'todo-identifiant-aleatoire', // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
-          description: "learn cloud database",
-          due: new Date("2018-09-01"),
-          tags: [
-            "cloud",
-            "database"
-          ],
-          // 为待办事项添加一个地理位置（113°E，23°N）
-          location: new db_t.Geo.Point(113, 23),
-          done: false
-        },
-        success: function (res) {
-          // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-          console.log(res)
-        }
-      }
-    )*/
-    this.setData(
-      {
-        test:"world",
-      }
-    )
-  },
-  pull_db: function()
-  {
-    db_t.collection('test').where(
-      {
-        text:"123"
-      } 
-    ).orderBy('createTime','desc')
-    .get()
-      .then(order_list => {
-      console.log(order_list.data)
-    })
-    .catch(console.error);
-  },
-  onLoad: function() {
+  onLoad: function () {
     if (!wx.cloud) {
       wx.redirectTo({
         url: '../chooseLib/chooseLib',
       })
       return
     }
-
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -89,7 +34,7 @@ Page({
     })
   },
 
-  onGetUserInfo: function(e) {
+  onGetUserInfo: function (e) {
     if (!this.logged && e.detail.userInfo) {
       this.setData({
         logged: true,
@@ -98,8 +43,15 @@ Page({
       })
     }
   },
-
-  onGetOpenid: function() {
+  to_database_test:function()
+  {
+    wx.navigateTo(
+      {
+        url:'../database_test/database_test'
+      }
+    )
+  },
+  onGetOpenid: function () {
     // 调用云函数
     wx.cloud.callFunction({
       name: 'login',
@@ -134,7 +86,7 @@ Page({
         })
 
         const filePath = res.tempFilePaths[0]
-        
+
         // 上传图片
         const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
         wx.cloud.uploadFile({
@@ -146,7 +98,7 @@ Page({
             app.globalData.fileID = res.fileID
             app.globalData.cloudPath = cloudPath
             app.globalData.imagePath = filePath
-            
+
             wx.navigateTo({
               url: '../storageConsole/storageConsole'
             })

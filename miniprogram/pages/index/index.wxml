@@ -12,17 +12,8 @@
     <view>
       <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
     </view>
-  </view>
-  <form bindsubmit="text_submit">
-    <view class="text_uploader">
-      <textarea name="text"></textarea>
-      <button form-type='submit'>提交</button>
-      <button form-type='reset'>重置</button>
+    <view>
+      <button bindtap='to_database_test' >数据库测试</button>
     </view>
-  </form>
-  <view>
-    <button bindtap='pull_db'>拉取</button>
-    <text>{{test_text}}</text>
   </view>
-
 </view>

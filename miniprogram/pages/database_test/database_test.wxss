@@ -1,0 +1,12 @@
+/* miniprogram/pages/database_test/database_test.wxss */
+page {
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.text_uploader
+{
+  color:black;
+  background-color:white;
+}
