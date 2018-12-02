@@ -1,10 +1,12 @@
 // miniprogram/pages/want/want.js
+const db = wx.cloud.database()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    deliver_time: '立即'
 
   },
 
@@ -62,5 +64,13 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  time_submit:function (e)
+  {
+    this.setData(
+      {
+        deliver_time: e.detail.value
+      }
+    )
   }
 })

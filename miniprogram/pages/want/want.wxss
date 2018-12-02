@@ -66,4 +66,12 @@ margin-top: 80rpx;
   height: 160rpx;
   width: 60%;
   padding-left: 20rpx;
-  margin-top: 40rpx;}
+  margin-top: 40rpx;
+  }
+  .time_picker{
+    height: 80rpx;
+    width: 300rpx;
+    margin-top:80rpx;
+    margin-left: 50rpx;
+    color: green;
+  }

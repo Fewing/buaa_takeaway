@@ -34,9 +34,11 @@
   <view class='product1'>
      送达时间
   </view>
-  <view class='table'>
-    <textarea style='width:300rpx;border:solid 1rpx black;height:50rpx' placeholder='大概送达时间'></textarea>
+  <picker mode="time" bindchange="time_submit">
+  <view class="time_picker" >
+  {{deliver_time}}
   </view>
+  </picker>
 </view>
 <view>
   <view class='back'><button class='submit'>提交订单</button></view>
