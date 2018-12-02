@@ -8,6 +8,9 @@
   </view>
   <view>
     <button bindtap='pull_db'>拉取</button>
-    <text>{{test_text}}</text>
+    <view wx:for="{{array}}" style='display:block'>
+    <view>内容：{{item.text}}</view>
+    <view>时间：{{item.createTime}}</view>
+    </view>
   </view>
 </view>

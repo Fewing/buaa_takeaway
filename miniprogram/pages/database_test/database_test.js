@@ -1,7 +1,10 @@
 const db = wx.cloud.database()
 Page({
   data:{
-    test_text: "等待文字"
+    test_text: "等待文字",
+    array: [{
+      text: '',
+    }]
   },
   text_submit: function (e) {
     console.log(e.detail.value.text)
@@ -17,7 +20,7 @@ Page({
   pull_db: function () {
     db.collection('test').where(
       {
-        text: "123456"
+        
       }
     ).orderBy('createTime', 'desc')
       .get()
@@ -25,7 +28,7 @@ Page({
         console.log(order_list.data)
         this.setData(
           {
-            test_text: order_list.data[0].text,
+            array: order_list.data
           }
         )
       })

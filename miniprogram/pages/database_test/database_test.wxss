@@ -1,7 +1,7 @@
 /* miniprogram/pages/database_test/database_test.wxss */
 page {
   background: #f6f6f6;
-  display: flex;
+  display: block;
   flex-direction: column;
   justify-content: flex-start;
 }
