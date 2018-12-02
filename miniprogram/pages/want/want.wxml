@@ -1,2 +1,46 @@
 <!--miniprogram/pages/want/want.wxml-->
-<text>miniprogram/pages/want/want.wxml</text>
+<view class='head'>
+
+</view>
+<view class='title'>
+  取消订单
+</view>
+<form>
+<view class='product'>
+  <view class='product1'>
+    商品名称
+  </view>
+  <view class='table'>
+    <textarea style='width:300rpx;border:solid 1rpx black;height:50rpx'></textarea>
+  </view>
+</view>
+<view class='product-1'>
+  <view class='product1'>
+     送货地点 
+  </view>
+  <view class='table'>
+    <textarea style='width:300rpx;border:solid 1rpx black;height:50rpx' placeholder='公寓+寝室号'></textarea>
+  </view>
+</view>
+<view class='product'>
+  <view class='product2'>
+      备注 
+  </view>
+  <view id='table1'>
+    <textarea style='width:400rpx;border:solid 1rpx black;height:130rpx' placeholder='口味等个人喜好'></textarea>
+  </view>
+</view>
+<view class='product-1'>
+  <view class='product1'>
+     送达时间
+  </view>
+  <view class='table'>
+    <textarea style='width:300rpx;border:solid 1rpx black;height:50rpx' placeholder='大概送达时间'></textarea>
+  </view>
+</view>
+<view>
+  <view class='back'><button class='submit'>提交订单</button></view>
+</view>
+</form>
+
+
