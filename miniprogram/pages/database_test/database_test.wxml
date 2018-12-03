@@ -11,6 +11,7 @@
     <view wx:for="{{array}}" style='display:block'>
     <view>内容：{{item.text}}</view>
     <view>时间：{{item.createTime}}</view>
+    <view class="line"></view>
     </view>
   </view>
 </view>

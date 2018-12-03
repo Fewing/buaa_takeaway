@@ -10,3 +10,9 @@ page {
   color:black;
   background-color:white;
 }
+.line
+{
+  background-color: orange;
+  width: 750rpx;
+  height: 1rpx;
+}

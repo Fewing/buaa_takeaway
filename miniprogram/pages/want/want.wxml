@@ -2,47 +2,55 @@
 <view class='head'>
 
 </view>
-<view class='title'>
+<navigator url="../index/index" class="title">
   取消订单
-</view>
-<form>
-<view class='product'>
-  <view class='product1'>
-    商品名称
+</navigator>
+<form bindsubmit="order_submit">
+  <view class='product'>
+    <view class='product1'>
+      商品名称
+    </view>
+    <view class='table'>
+      <textarea name="product" style='width:300rpx;border:solid 1rpx black;height:50rpx'></textarea>
+    </view>
   </view>
-  <view class='table'>
-    <textarea style='width:300rpx;border:solid 1rpx black;height:50rpx'></textarea>
+  <view class='product-1'>
+    <view class='product1'>
+      送货地点
+    </view>
+    <view class='table'>
+      <textarea name="address" style='width:300rpx;border:solid 1rpx black;height:50rpx' placeholder='公寓+寝室号'></textarea>
+    </view>
   </view>
-</view>
-<view class='product-1'>
-  <view class='product1'>
-     送货地点 
+  <view class='product'>
+    <view class='product1'>
+      跑腿小费
+    </view>
+    <view class='table'>
+      <textarea name="fee" style='width:300rpx;border:solid 1rpx black;height:50rpx' placeholder="只输入数字"></textarea>元
+    </view>
   </view>
-  <view class='table'>
-    <textarea style='width:300rpx;border:solid 1rpx black;height:50rpx' placeholder='公寓+寝室号'></textarea>
+  <view class='product-1'>
+    <view class='product2'>
+      备注
+    </view>
+    <view id='table1'>
+      <textarea name="remarks" style='width:400rpx;border:solid 1rpx black;height:130rpx' placeholder='口味等个人喜好'></textarea>
+    </view>
   </view>
-</view>
-<view class='product'>
-  <view class='product2'>
-      备注 
+  <view class='product'>
+    <view class='product1'>
+      送达时间
+    </view>
+    <picker mode="time" bindchange="time_submit">
+      <view class="time_picker">
+        {{deliver_time}}
+      </view>
+    </picker>
   </view>
-  <view id='table1'>
-    <textarea style='width:400rpx;border:solid 1rpx black;height:130rpx' placeholder='口味等个人喜好'></textarea>
+  <view>
+    <view class='back'>
+      <button class="submit" form-type="submit">提交订单</button>
+    </view>
   </view>
-</view>
-<view class='product-1'>
-  <view class='product1'>
-     送达时间
-  </view>
-  <picker mode="time" bindchange="time_submit">
-  <view class="time_picker" >
-  {{deliver_time}}
-  </view>
-  </picker>
-</view>
-<view>
-  <view class='back'><button class='submit'>提交订单</button></view>
-</view>
 </form>
-
-

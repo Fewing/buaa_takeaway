@@ -30,7 +30,6 @@ Page({
   onShow: function () {
 
   },
-
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -72,5 +71,35 @@ Page({
         deliver_time: e.detail.value
       }
     )
-  }
+  },
+  order_submit: function (e) {
+    db.collection('order').add(
+      {
+        data: {
+          product: e.detail.value.product,
+          address: e.detail.value.address,
+          fee: e.detail.value.fee,
+          remarks: e.detail.value.remarks,
+          createtime: db.serverDate(),
+          delivertime: this.data.deliver_time,
+        },
+        success:function()
+        {
+          wx.showModal({
+            title: '下单成功',
+            content: '您已成功下单，即时订单保留一小时，指定时间订单超时后保留半小时',
+            showCancel:false,
+            success:function(){
+              wx.navigateTo({
+                url: '../index/index',
+                success: function(res) {},
+                fail: function(res) {},
+                complete: function(res) {},
+              })
+            },
+          })
+        }
+      }
+    )
+  },
 })

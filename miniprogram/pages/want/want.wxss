@@ -22,7 +22,8 @@ page {
   height: 80rpx;
   width: 50%;
   padding-left: 20rpx;
-margin-top: 80rpx;
+  margin-top: 80rpx;
+  display: flex;
 }
 #123{
   height:500RPX;
@@ -43,13 +44,15 @@ margin-top: 80rpx;
   margin-top: 50rpx;
 }
 .title{
-  background-color:  cyan;
+  background-color:  rgb(71, 196, 196);
   color: white;
   height: 100rpx;
   vertical-align: bottom;
   display: table-cell;
-  width: 100%;
+  width: 200rpx;
   margin-left: 50rpx;
+  text-align: center;
+  line-height: 100rpx;
 }
 .back{
   width: 300rpx;
