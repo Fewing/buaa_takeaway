@@ -1,20 +1,15 @@
 <!--index.wxml-->
 <view class="container">
-
-  <!-- 用户 openid -->
-  <view class="userinfo">
-    <button 
-      open-type="getUserInfo" 
-      bindgetuserinfo="onGetUserInfo"
-      class="userinfo-avatar"
-      style="background-image: url({{avatarUrl}})"
-    ></button>
-    <view>
-      <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
-    </view>
-    <view>
-      <button bindtap='to_database_test' >数据库测试</button>
-    </view>
+  <view class="head">
+    <image src='../logo.jpg'></image>  
   </view>
-  <navigator url="../want/want">点我</navigator>
+
+  <view id="No1"> </view>
+  <view id="No2"></view>
+  <view id="No1"></view>
+
+  <view id="choose">
+    <button style="margin-right:20px;">我要下单</button>
+    <button>我要接单</button>
+  </view>
 </view>
