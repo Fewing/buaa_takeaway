@@ -1,9 +1,11 @@
-exports.main = (event, context) => {
-    const db = cloud.database()
-    const _ = db.command
+const cloud = require('wx-server-sdk')
+cloud.init()
+const db = cloud.database()
+const _ = db.command
+exports.main = async (event, context) => {
     try {
       return await db.collection('order').where({
-        id: ""
+        id: event.id
       })
         .update({
           data: {

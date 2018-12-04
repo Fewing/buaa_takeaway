@@ -135,7 +135,7 @@ Page({
             content: '您已成功下单，订单将最多为您保留到送达时间后一小时',
             showCancel:false,
             success:function(){
-              wx.switchTab({
+              wx.navigateTo({
                 url: '../my_info/my_info',
               })
             },
