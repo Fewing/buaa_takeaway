@@ -7,32 +7,25 @@ Page({
    */
   data: {
     deliver_time: '立即',
-    now:"00:00",
-    date:"",
+    now:new Date().getHours + ":" + new Date().getMinutes,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var date = new Date()
+    this.setData(
+      {
+        now: date.getHours()+":"+date.getMinutes()
+      }
+    )
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.setData(
-      {
-        date:db.serverDate(),
-      }
-    )
-    this.setData(
-      {
-        now: this.data.date.getMinutes() + ":" + this.data.date.getMinutes(),
-      }
-    )
-  console.log(this.data.now)
   },
 
   /**
@@ -114,6 +107,14 @@ Page({
       title: '请稍后',
       mask:'true',
     })
+    var deliver_date= new Date();
+    if(this.data.deliver_time!="立即")
+    {
+      var hours=this.data.deliver_time[0]+this.data.deliver_time[1];
+      var minutes=this.data.deliver_time[3]+this.data.deliver_time[4];
+      deliver_date.setHours(hours);
+      deliver_date.setMinutes(minutes);
+    }
     db.collection('order').add(
       {
         data: {
@@ -122,7 +123,7 @@ Page({
           fee: e.detail.value.fee,
           remarks: e.detail.value.remarks,
           createtime: db.serverDate(),
-          delivertime: this.data.deliver_time,
+          delivertime:deliver_date,
           status:"0",
         },
         success:function()

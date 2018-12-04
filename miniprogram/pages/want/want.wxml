@@ -2,7 +2,7 @@
 <view class='head'>
 
 </view>
-<navigator url="../index/index" class="title">
+<navigator url="../database_test/database_test" class="title">
   取消订单
 </navigator>
 <form bindsubmit="order_submit">
