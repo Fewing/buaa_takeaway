@@ -1,5 +1,6 @@
 // miniprogram/pages/deliver/deliver.js
 const db=wx.cloud.database()
+const com=db.command
 Page({
 
   /**
@@ -25,17 +26,21 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    db.collection('test').where(
+    var d = new Date();
+    var t = d.getTime();
+    t -= 3600000;//一个小时的毫秒数
+    var d_limit = new Date(t);
+    db.collection('order').where(
       {
-
+        delivertime:com.lte(d_limit)
       }
-    ).orderBy('createTime', 'desc')
+    ).orderBy('delivertime', 'asc')
       .get()
-      .then(order_list => {
-        console.log(order_list.data)
+      .then(e => {
+        console.log(e.data)
         this.setData(
           {
-            array: order_list.data
+            array: e.data
           }
         )
       })
