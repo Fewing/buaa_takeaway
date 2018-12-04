@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--miniprogram/pages/want/want.wxml-->
 <view class='head'>
 
@@ -54,3 +55,53 @@
     </view>
   </view>
 </form>
+=======
+<view class="weui-cells weui-cells_after-title">
+<view class="weui-cell weui-cell_input">
+<view class="weui-cell__hd">
+<view class="weui-label">商品名称</view>
+</view>
+<view class="weui-cell__bd">
+<input class="weui-input" />
+</view>
+</view>
+<view class="weui-cell weui-cell_input weui-cell_vcode">
+<view class="weui-cell__hd">
+<view class="weui-label">备注</view>
+</view>
+<view class="weui-cell__bd">
+<input class="weui-input" placeholder="个人口味要求等" />
+</view>
+</view>
+<view class="weui-cell weui-cell_input">
+<view class="weui-cell__hd">
+<view class="place">送货地点</view>
+</view>
+<view class="weui-cell__bd">
+<input class="weui-input" />
+</view>
+</view>
+<view class="weui-cell weui-cell_input">
+<view class="weui-cell__hd">
+<view class="weui-label">时间</view>
+</view>
+<view class="weui-cell__bd">
+<picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+<view class="weui-input">{{time}}</view>
+</picker>
+</view>
+</view>
+<view class="weui-cell weui-cell_input weui-cell_vcode">
+</view>
+<view class="weui-cells__tips">输入大概送达时间</view>
+</view>
+<view class="page">
+<view class="page">
+<view class="page__bd">
+<view class="weui-btn-area">
+<button class="weui-btn" type="default" bindtap="openToast">提交订单</button>
+</view>
+</view>
+</view>
+</view>
+>>>>>>> 02003c2c093660a07895180bdc16155e8617a243

@@ -24,17 +24,28 @@ page
 #No1
 {
   height: 220rpx;
-  width: 500rpx;
+  width: 450rpx;
   margin-top: 30rpx;
   margin-left: 40rpx;
   margin-right: 100rpx; 
   border: 1rpx rgb(192, 190, 190) solid; 
 }
+#No1 image
+{
+  height: 220rpx;
+  width: 450rpx;
+}
+
+#No2 image
+{
+  height: 220rpx;
+  width: 450rpx;
+}
 
 #No2
 {
   height: 220rpx;
-  width: 500rpx;
+  width: 450rpx;
   margin-top: 30rpx;
   margin-left: 100rpx;
   margin-right: 40rpx;
