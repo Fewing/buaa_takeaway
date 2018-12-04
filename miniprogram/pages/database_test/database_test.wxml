@@ -10,4 +10,5 @@
     <button bindtap='pull_db'>拉取</button>
     <text>{{test_text}}</text>
   </view>
+  
 </view>
