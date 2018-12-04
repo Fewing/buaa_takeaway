@@ -1,1 +1,18 @@
 /* miniprogram/pages/my_info/my_info.wxss */
+.touimage{
+  margin: 0rpx;
+  display: flex;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.head{
+    justify-content: center;
+  overflow: hidden;
+  width: 161rpx;
+  height: 161rpx;
+  border-radius: 50%;
+}
+.text{
+  padding-top: 60rpx;
+  padding-left: 15rpx;
+}
