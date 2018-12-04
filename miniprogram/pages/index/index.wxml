@@ -4,7 +4,7 @@
     <image src='logo.jpg'></image>  
   </view>
 
-  <view id="No1"> </view>
+  <view id="No1"><image src='./食堂.jpeg'></image> </view>
   <view id="No2"></view>
   <view id="No1"></view>
 </view>
