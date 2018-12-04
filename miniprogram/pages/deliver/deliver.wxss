@@ -1,1 +1,7 @@
 /* miniprogram/pages/deliver/deliver.wxss */
+.line
+{
+  background-color: orange;
+  width: 750rpx;
+  height: 1rpx;
+}

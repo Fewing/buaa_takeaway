@@ -32,7 +32,7 @@ Page({
     var d_limit = new Date(t);
     db.collection('order').where(
       {
-        delivertime:com.lte(d_limit)
+        
       }
     ).orderBy('delivertime', 'asc')
       .get()
@@ -40,7 +40,7 @@ Page({
         console.log(e.data)
         this.setData(
           {
-            array: e.data
+            order_list: e.data
           }
         )
       })

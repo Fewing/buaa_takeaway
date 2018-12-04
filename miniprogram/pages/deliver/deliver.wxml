@@ -1,4 +1,4 @@
-<view wx:for="{{array}}">
+<view wx:for="{{order_list}}">
     <view>内容：{{item.product}}</view>
     <view>时间：{{item.delivertime}}</view>
     <view class="line"></view>
