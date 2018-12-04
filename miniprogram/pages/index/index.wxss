@@ -36,6 +36,12 @@ page
   width: 450rpx;
 }
 
+#No2 image
+{
+  height: 220rpx;
+  width: 450rpx;
+}
+
 #No2
 {
   height: 220rpx;
