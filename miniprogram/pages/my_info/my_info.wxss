@@ -2,17 +2,19 @@
 .touimage{
   margin: 0rpx;
   display: flex;
-  border-radius: 50%;
   vertical-align: middle;
+  background-color: rgba(0, 183, 255, 0.349);
+  height: 240rpx;
 }
 .head{
-    justify-content: center;
+  justify-content: center;
   overflow: hidden;
   width: 161rpx;
   height: 161rpx;
   border-radius: 50%;
+  margin:20rpx;
 }
 .text{
-  padding-top: 60rpx;
+  padding-top: 70rpx;
   padding-left: 15rpx;
 }
