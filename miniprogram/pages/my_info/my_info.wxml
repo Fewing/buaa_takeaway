@@ -1,2 +1,9 @@
 <!--miniprogram/pages/my_info/my_info.wxml-->
-<text>miniprogram/pages/my_info/my_info.wxml</text>
+<view  class="touimage">
+  <view class="head">
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <view class='text'>
+    <open-data type="userNickName"></open-data>
+  </view>
+</view>
