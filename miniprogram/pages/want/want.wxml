@@ -1,107 +1,59 @@
-<<<<<<< HEAD
 <!--miniprogram/pages/want/want.wxml-->
-<view class='head'>
-
-</view>
-<navigator url="../database_test/database_test" class="title">
-  取消订单
-</navigator>
 <form bindsubmit="order_submit">
-  <view class='product'>
-    <view class='product1'>
-      商品名称
-    </view>
-    <view class='table'>
-      <textarea name="product" style='width:300rpx;border:solid 1rpx black;height:50rpx'></textarea>
-    </view>
-  </view>
-  <view class='product-1'>
-    <view class='product1'>
-      送货地点
-    </view>
-    <view class='table'>
-      <textarea name="address" style='width:300rpx;border:solid 1rpx black;height:50rpx' placeholder='公寓+寝室号'></textarea>
-    </view>
-  </view>
-  <view class='product'>
-    <view class='product1'>
-      跑腿小费
-    </view>
-    <view class='table'>
-      <textarea name="fee" style='width:300rpx;border:solid 1rpx black;height:50rpx' placeholder="只输入数字"></textarea>元
-    </view>
-  </view>
-  <view class='product-1'>
-    <view class='product2'>
-      备注
-    </view>
-    <view id='table1'>
-      <textarea name="remarks" style='width:400rpx;border:solid 1rpx black;height:130rpx' placeholder='口味等个人喜好'></textarea>
-    </view>
-  </view>
-  <view class='product'>
-    <view class='product1'>
-      送达时间
-    </view>
-    <picker mode="time" bindchange="time_submit" start="{{now}}">
-      <view class="time_picker">
-        {{deliver_time}}
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">商品名称</view>
       </view>
-    </picker>
+      <view class="weui-cell__bd">
+        <input name="product" class="weui-input" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input weui-cell_vcode">
+      <view class="weui-cell__hd">
+        <view class="weui-label">送货地址</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input name="address" class="weui-input" placeholder="公寓+楼层+门牌号" />
+      </view>
+    </view>
+     <view class="weui-cell weui-cell_input weui-cell_vcode">
+      <view class="weui-cell__hd">
+        <view class="weui-label">跑腿小费</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input name="fee" class="weui-input" placeholder="只输入数字，单位“元”" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input weui-cell_vcode">
+      <view class="weui-cell__hd">
+        <view  class="weui-label">备注</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input name="remarks" class="weui-input" placeholder="个人口味要求等" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">送达时间</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="time" start="{{now}}" bindchange="time_submit">
+          <view class="weui-input" style='color:#09BB07'>{{deliver_time}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input weui-cell_vcode">
+    </view>
+    <view class="weui-cells__tips">输入大概送达时间</view>
   </view>
-  <view>
-    <view class='back'>
-      <button class="submit" form-type="submit">提交订单</button>
+  <view class="page">
+    <view class="page">
+      <view class="page__bd">
+        <view class="weui-btn-area">
+          <button class="weui-btn" type="primary" form-type="submit">提交订单</button>
+        </view>
+      </view>
     </view>
   </view>
 </form>
-=======
-<view class="weui-cells weui-cells_after-title">
-<view class="weui-cell weui-cell_input">
-<view class="weui-cell__hd">
-<view class="weui-label">商品名称</view>
-</view>
-<view class="weui-cell__bd">
-<input class="weui-input" />
-</view>
-</view>
-<view class="weui-cell weui-cell_input weui-cell_vcode">
-<view class="weui-cell__hd">
-<view class="weui-label">备注</view>
-</view>
-<view class="weui-cell__bd">
-<input class="weui-input" placeholder="个人口味要求等" />
-</view>
-</view>
-<view class="weui-cell weui-cell_input">
-<view class="weui-cell__hd">
-<view class="place">送货地点</view>
-</view>
-<view class="weui-cell__bd">
-<input class="weui-input" />
-</view>
-</view>
-<view class="weui-cell weui-cell_input">
-<view class="weui-cell__hd">
-<view class="weui-label">时间</view>
-</view>
-<view class="weui-cell__bd">
-<picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
-<view class="weui-input">{{time}}</view>
-</picker>
-</view>
-</view>
-<view class="weui-cell weui-cell_input weui-cell_vcode">
-</view>
-<view class="weui-cells__tips">输入大概送达时间</view>
-</view>
-<view class="page">
-<view class="page">
-<view class="page__bd">
-<view class="weui-btn-area">
-<button class="weui-btn" type="default" bindtap="openToast">提交订单</button>
-</view>
-</view>
-</view>
-</view>
->>>>>>> 02003c2c093660a07895180bdc16155e8617a243
