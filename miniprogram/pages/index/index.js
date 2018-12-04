@@ -47,7 +47,7 @@ Page({
   {
     wx.navigateTo(
       {
-        url:'../database_test/database_test'
+        url:'../want/want'
       }
     )
   },

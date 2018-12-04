@@ -1,15 +1,10 @@
 <!--index.wxml-->
 <view class="container">
   <view class="head">
-    <image src='../logo.jpg'></image>  
+    <image src='logo.jpg'></image>  
   </view>
 
   <view id="No1"> </view>
   <view id="No2"></view>
   <view id="No1"></view>
-
-  <view id="choose">
-    <button style="margin-right:20px;">我要下单</button>
-    <button>我要接单</button>
-  </view>
 </view>

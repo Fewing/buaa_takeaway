@@ -6,8 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    deliver_time: '立即'
-
+    deliver_time: '立即',
+    now:"00:00",
+    date:"",
   },
 
   /**
@@ -21,7 +22,17 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData(
+      {
+        date:db.serverDate(),
+      }
+    )
+    this.setData(
+      {
+        now: this.data.date.getMinutes() + ":" + this.data.date.getMinutes(),
+      }
+    )
+  console.log(this.data.now)
   },
 
   /**
@@ -73,6 +84,36 @@ Page({
     )
   },
   order_submit: function (e) {
+    if(e.detail.value.product=="")
+    {
+      wx.showModal({
+        title: '错误',
+        content: '请填写商品名称',
+        showCancel:false,
+      })
+      return
+    }
+    if(e.detail.value.address=="")
+    {
+      wx.showModal({
+        title: '错误',
+        content: '请填写送货地点',
+        showCancel:false,
+      })
+      return
+    }
+    if (e.detail.value.fee == "") {
+      wx.showModal({
+        title: '错误',
+        content: '请填写跑腿小费',
+        showCancel: false,
+      })
+      return
+    }
+    wx.showLoading({
+      title: '请稍后',
+      mask:'true',
+    })
     db.collection('order').add(
       {
         data: {
@@ -82,19 +123,18 @@ Page({
           remarks: e.detail.value.remarks,
           createtime: db.serverDate(),
           delivertime: this.data.deliver_time,
+          status:"0",
         },
         success:function()
         {
+          wx.hideLoading()
           wx.showModal({
             title: '下单成功',
-            content: '您已成功下单，即时订单保留一小时，指定时间订单超时后保留半小时',
+            content: '您已成功下单，订单将最多为您保留到送达时间后一小时',
             showCancel:false,
             success:function(){
-              wx.navigateTo({
-                url: '../index/index',
-                success: function(res) {},
-                fail: function(res) {},
-                complete: function(res) {},
+              wx.switchTab({
+                url: '../my_info/my_info',
               })
             },
           })

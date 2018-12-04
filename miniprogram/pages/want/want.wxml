@@ -42,7 +42,7 @@
     <view class='product1'>
       送达时间
     </view>
-    <picker mode="time" bindchange="time_submit">
+    <picker mode="time" bindchange="time_submit" start="{{now}}">
       <view class="time_picker">
         {{deliver_time}}
       </view>

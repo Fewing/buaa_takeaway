@@ -1,10 +1,16 @@
 // miniprogram/pages/deliver/deliver.js
+const db=wx.cloud.database()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+   order_list:[
+     {
+
+     }
+   ]
 
   },
 
@@ -12,14 +18,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    db.collection('test').where(
+      {
 
+      }
+    ).orderBy('createTime', 'desc')
+      .get()
+      .then(order_list => {
+        console.log(order_list.data)
+        this.setData(
+          {
+            array: order_list.data
+          }
+        )
+      })
   },
 
   /**

@@ -1,2 +1,5 @@
-<!--miniprogram/pages/deliver/deliver.wxml-->
-<text>miniprogram/pages/deliver/deliver.wxml</text>
+<view wx:for="{{array}}">
+    <view>内容：{{item.text}}</view>
+    <view>时间：{{item.createTime}}</view>
+    <view class="line"></view>
+    </view>
