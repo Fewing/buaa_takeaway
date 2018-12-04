@@ -1,5 +1,57 @@
-<view wx:for="{{array}}">
-    <view>内容：{{item.product}}</view>
-    <view>时间：{{item.delivertime}}</view>
-    <view class="line"></view>
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Preview</view>
+        <view class="page__desc">表单预览</view>
     </view>
+    <view class="page__bd">
+        <view class="weui-form-preview">
+            <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">跑腿小费</view>
+                    <view class="weui-form-preview__value_in-hd">¥</view>
+                </view>
+            </view>
+            <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">商品</view>
+                    <view class="weui-form-preview__value"></view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">地址</view>
+                    <view class="weui-form-preview__value"></view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">备注</view>
+                    <view class="weui-form-preview__value"></view>
+                </view>
+            </view>
+            <view class="weui-form-preview__ft">
+                <navigator url="" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">操作</navigator>
+            </view>
+        </view>
+        <view class="weui-form-preview">
+            <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__label">跑腿小费</view>
+                <view class="weui-form-preview__value_in-hd">¥</view>
+            </view>
+            <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">商品</view>
+                    <view class="weui-form-preview__value"></view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">地址</view>
+                    <view class="weui-form-preview__value"></view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">备注</view>
+                    <view class="weui-form-preview__value"></view>
+                </view>
+            </view>
+            <view class="weui-form-preview__ft">
+                <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">辅助操作</navigator>
+                <navigator class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">操作</navigator>
+            </view>
+        </view>
+    </view>
+</view>

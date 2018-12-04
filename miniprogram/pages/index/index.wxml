@@ -5,7 +5,7 @@
   </view>
 
   <view id="No1"><image src='./食堂.jpeg'></image> </view>
-  <view id="No2"></view>
-  <view id="No1"></view>
+  <view id="No2"><image src='./舌尖上的北航.jpg'></image></view>
+  <view id="No1"><image src='./北航.jpg'></image></view>
  
 </view>
