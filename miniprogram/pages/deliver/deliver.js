@@ -11,8 +11,7 @@ Page({
      {
 
      }
-   ]
-
+   ],
   },
 
   /**
@@ -56,6 +55,45 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
+  order_receive: function(event)
+  {
+    var id=event.target.id
+    console.log(id)
+    wx.showLoading({
+      title: '请稍后',
+      mask: 'true',
+    })
+    wx.cloud.callFunction(
+      {
+        name: "receive_orders",
+        data:{
+          id: id,
+        }
+      }
+    )
+    db.collection('order').where(
+      {
+        _id: id,
+      }
+    ).get()
+      .then(e => {
+        console.log(e.data)
+        if (e.data.status == app.globalData.openid)
+        {
+          wx.hideLoading()
+          wx.showModal({
+            title: '接单成功',
+            content: '接单成功，请尽快按照要求送达',
+            showCancel: false,
+            success: function () {
+              wx.switchTab({
+                url: '../my_info/my_info',
+              })
+            },
+          })
+        }
+      })
+  },
   onHide: function () {
 
   },

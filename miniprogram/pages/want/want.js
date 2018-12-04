@@ -125,6 +125,7 @@ Page({
           createtime: db.serverDate(),
           delivertime:deliver_date,
           status:"0",
+          complete:"0",
         },
         success:function()
         {
