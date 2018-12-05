@@ -52,7 +52,30 @@ Page({
         })
       })
   },
-
+  towant: function () {
+    wx.navigateTo({
+      url: '../want/want',
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
+  todeliver: function () {
+    wx.navigateTo({
+      url: '../deliver/deliver',
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
+  toinfo: function () {
+    wx.navigateTo({
+      url: '../my_info/my_info',
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
