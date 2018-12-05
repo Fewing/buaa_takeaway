@@ -9,7 +9,7 @@ page
 
 .head
 {
-  height: 130rpx;
+  height: 180rpx;
   width: 100%;
   background-color: #FFFFFF;
   display: flex;
@@ -25,14 +25,14 @@ page
 }
 #pic1 image
 {
-  height: 130rpx;
-  width: 130rpx;
+  height: 180rpx;
+  width: 180rpx;
 
 }
 #pic2 image
 {
-  height: 130rpx;
-  width:300rpx;
+  height: 180rpx;
+  width:400rpx;
 }
 
 #No1
@@ -65,28 +65,20 @@ page
   border: 1rpx rgb(192, 190, 190) solid;
 }
 
-.choose
-{
-  height: 150rpx;
-  width: 30%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: larger;
-}
 
 #bottom_nav
 {
-  height: 150rpx;
+  height: 140rpx;
   width: 100%;
   display: flex;
   flex-direction: row;
 }
-#bottom_nav navigator
+#bottom_nav button
 {
-  border: 1rpx #eceaea solid;
-  margin-top: 50rpx;
-  margin-left: 40rpx;
-  display: flex; 
-  background-color: #f7f3f3;
+  height: 100rpx;
+  width: 180rpx;
+  margin-top: 25rpx;
+  font-size: larger;
+  background-color: rgba(82, 219, 40, 0.123);
+
 }

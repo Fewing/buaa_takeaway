@@ -9,8 +9,8 @@
   <view id="No2"><image src='yilou.jpg'></image></view>
   <view id="No1"><image src='erlou.jpg'></image></view>
   <view id="bottom_nav">
-  <view class="choose"><navigator url='../want/want'>下单</navigator></view>
-  <view class="choose"><navigator url='../deliver/deliver'>接单</navigator></view>
-  <view class="choose"><navigator url='../my_info/my_info'>我的</navigator></view>
+    <button>下单</button>
+    <button>接单</button>
+    <button>我的</button>
   </view>
 </view>
