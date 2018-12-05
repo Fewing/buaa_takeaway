@@ -68,6 +68,30 @@ Page({
   onShareAppMessage: function () {
 
   },
+  towant: function () {
+    wx.navigateTo({
+      url: '../want/want',
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
+  todeliver: function () {
+    wx.navigateTo({
+      url: '../deliver/deliver',
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
+  toinfo: function () {
+    wx.navigateTo({
+      url: '../my_info/my_info',
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
   time_submit:function (e)
   {
     this.setData(

@@ -9,8 +9,8 @@
   <view id="No2"><image src='yilou.jpg'></image></view>
   <view id="No1"><image src='erlou.jpg'></image></view>
   <view id="bottom_nav">
-    <button>下单</button>
-    <button>接单</button>
-    <button>我的</button>
+    <button bindtap='towant'>下单</button>
+    <button bindtap='todeliver'>接单</button>
+    <button bindtap='toinfo'>我的</button>
   </view>
 </view>

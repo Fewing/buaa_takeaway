@@ -1,7 +1,7 @@
 <view class="page">
-<view wx:if="{{order_list.length == 0}}">
-当前暂无订单可接
-</view>
+  <view wx:if="{{order_list.length == 0}}" class="no_order">
+    当前暂无订单可接
+  </view>
   <view wx:for="{{order_list}}" class="page__bd">
     <view class="weui-form-preview">
       <view class="weui-form-preview__hd">
@@ -32,5 +32,10 @@
         <button id="{{item._id}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='order_receive'>接单</button>
       </view>
     </view>
+  </view>
+  <view id="bottom_nav">
+    <button bindtap='towant'>下单</button>
+    <button bindtap='todeliver'>接单</button>
+    <button bindtap='toinfo'>我的</button>
   </view>
 </view>

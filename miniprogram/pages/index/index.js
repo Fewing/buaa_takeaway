@@ -9,7 +9,7 @@ Page({
     takeSession: false,
     requestResult: ''
   },
-  onLoad: function () {
+  onLoad: function() {
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -40,7 +40,7 @@ Page({
     })
   },
 
-  onGetUserInfo: function (e) {
+  onGetUserInfo: function(e) {
     if (!this.logged && e.detail.userInfo) {
       this.setData({
         logged: true,
@@ -49,7 +49,31 @@ Page({
       })
     }
   },
-  onGetOpenid: function () {
+  towant: function() {
+    wx.navigateTo({
+      url: '../want/want',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  todeliver: function() {
+    wx.navigateTo({
+      url: '../deliver/deliver',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  toinfo: function() {
+    wx.navigateTo({
+      url: '../my_info/my_info',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  onGetOpenid: function() {
     // 调用云函数
     wx.cloud.callFunction({
       name: 'login',

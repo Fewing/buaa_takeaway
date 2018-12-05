@@ -17,7 +17,7 @@
         <input name="address" class="weui-input" placeholder="公寓+楼层+门牌号" />
       </view>
     </view>
-     <view class="weui-cell weui-cell_input weui-cell_vcode">
+    <view class="weui-cell weui-cell_input weui-cell_vcode">
       <view class="weui-cell__hd">
         <view class="weui-label">跑腿小费</view>
       </view>
@@ -27,7 +27,7 @@
     </view>
     <view class="weui-cell weui-cell_input weui-cell_vcode">
       <view class="weui-cell__hd">
-        <view  class="weui-label">备注</view>
+        <view class="weui-label">备注</view>
       </view>
       <view class="weui-cell__bd">
         <input name="remarks" class="weui-input" placeholder="个人口味要求等" />
@@ -57,3 +57,8 @@
     </view>
   </view>
 </form>
+<view id="bottom_nav">
+  <button bindtap='towant'>下单</button>
+  <button bindtap='todeliver'>接单</button>
+  <button bindtap='toinfo'>我的</button>
+</view>

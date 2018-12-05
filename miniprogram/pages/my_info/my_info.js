@@ -8,33 +8,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    my_order:[
-      {
+    my_order: [{
 
-      }
-    ],
+    }],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var d = new Date();
     var t = d.getTime();
     t -= 3600000; //一个小时的毫秒数
     var d_limit = new Date(t);
     db.collection('order').where(
-      com.or(
-        {
+        com.or({
           delivertime: com.gte(d_limit),
           _openid: app.globalData.openid,
-        },
-        {
-          status:com.neq('0').and(com.neq('-1')) ,
-          complete:'0',
-        }
-      )
-     ).orderBy('delivertime', 'desc')
+        }, {
+          status: com.neq('0').and(com.neq('-1')),
+          complete: '0',
+          _openid: app.globalData.openid,
+        })
+      ).orderBy('delivertime', 'desc')
       .get()
       .then(e => {
         var temp_hours
@@ -44,7 +40,7 @@ Page({
         var temp_date
         for (var i = 0; i < e.data.length; i++) {
           temp_year = e.data[i].delivertime.getFullYear()
-          temp_month = e.data[i].delivertime.getMonth()+1
+          temp_month = e.data[i].delivertime.getMonth() + 1
           temp_date = e.data[i].delivertime.getDate()
           temp_hours = e.data[i].delivertime.getHours()
           temp_minutes = e.data[i].delivertime.getMinutes()
@@ -54,16 +50,13 @@ Page({
           if (temp_minutes < 10) {
             temp_minutes = "0" + temp_minutes
           }
-          e.data[i].delivertime = temp_year+"-" + temp_month + "-" + temp_date + " " + temp_hours + ":" + temp_minutes;
-          if(e.data[i].status=="0"){
-            e.data[i].status="未接单"
-          }
-          else if (e.data[i].status == "-1")
-          {
+          e.data[i].delivertime = temp_year + "-" + temp_month + "-" + temp_date + " " + temp_hours + ":" + temp_minutes;
+          if (e.data[i].status == "0") {
+            e.data[i].status = "未接单"
+          } else if (e.data[i].status == "-1") {
             e.data[i].status = "已取消"
-          }
-          else {
-            if (e.data[i].complete=="0"){
+          } else {
+            if (e.data[i].complete == "0") {
               e.data[i].status = "已接单，递送中"
             }
             if (e.data[i].complete == "1") {
@@ -80,11 +73,34 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
-  confirm: function(event)
-  {
+  towant: function () {
+    wx.navigateTo({
+      url: '../want/want',
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
+  todeliver: function () {
+    wx.navigateTo({
+      url: '../deliver/deliver',
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
+  toinfo: function () {
+    wx.navigateTo({
+      url: '../my_info/my_info',
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
+  confirm: function(event) {
     var id = event.target.id
     console.log(id)
     wx.showModal({
@@ -99,29 +115,34 @@ Page({
           })
           console.log(id)
           db.collection('order').doc(id)
-            .update(
-              {
-                data: {
-                  complete: "1",
-                },
-                success: function () {
-                  wx.hideLoading()
-                  wx.showToast({
-                    title: '确认收货成功',
-                    icon: 'success',
-                    duration: 2000
-                  })
-                }
+            .update({
+              data: {
+                complete: "1",
               },
-          )
+              success: function() {
+                wx.hideLoading()
+                wx.showToast({
+                  title: '确认收货成功',
+                  icon: 'success',
+                  duration: 2000,
+                  complete(res) {
+                    wx.navigateTo({
+                      url: '../my_info/my_info',
+                      success: function(res) {},
+                      fail: function(res) {},
+                      complete: function(res) {},
+                    })
+                  }
+                })
+              }
+            }, )
         } else if (!res.confirm) {
           return
         }
       }
     })
   },
-  cancel:function(event)
-  {
+  cancel: function(event) {
     var id = event.target.id
     wx.showModal({
       title: '确认',
@@ -135,21 +156,27 @@ Page({
             mask: 'true',
           })
           db.collection('order').doc(id)
-            .update(
-              {
-                data: {
-                  status: "-1",
-                },
-                success: function () {
-                  wx.hideLoading()
-                  wx.showToast({
-                    title: '订单取消成功',
-                    icon: 'success',
-                    duration: 2000
-                  })
-                }
+            .update({
+              data: {
+                status: "-1",
               },
-          )
+              success: function() {
+                wx.hideLoading()
+                wx.showToast({
+                  title: '订单取消成功',
+                  icon: 'success',
+                  duration: 2000,
+                  complete(res) {
+                    wx.navigateTo({
+                      url: '../my_info/my_info',
+                      success: function(res) {},
+                      fail: function(res) {},
+                      complete: function(res) {},
+                    })
+                  }
+                })
+              }
+            }, )
         } else if (!res.confirm) {
           return
         }
@@ -159,42 +186,42 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

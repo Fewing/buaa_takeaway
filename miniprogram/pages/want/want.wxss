@@ -27,3 +27,21 @@ float: left;
 page{
 background-color: #FFFFFF;
 }
+#bottom_nav
+{
+  height: 140rpx;
+  width: 750rpx;
+  display: flex;
+  flex-direction: row;
+  position:fixed;
+  bottom:0;
+}
+#bottom_nav button
+{
+  height: 100rpx;
+  width: 250rpx;
+  margin-top: 25rpx;
+  font-size: larger;
+  background-color: rgba(82, 219, 40, 0.123);
+
+}
