@@ -9,16 +9,30 @@ page
 
 .head
 {
-  height: 100rpx;
+  height: 130rpx;
   width: 100%;
   background-color: #FFFFFF;
- 
-}
-.head image
-{
-  height: 100rpx;
-  width: 100rpx;
   display: flex;
+  flex-direction: row;
+}
+#pic1
+{
+  margin-left: 10rpx;
+}
+#pic2
+{
+  margin-left: 60rpx;
+}
+#pic1 image
+{
+  height: 130rpx;
+  width: 130rpx;
+
+}
+#pic2 image
+{
+  height: 130rpx;
+  width:300rpx;
 }
 
 #No1
@@ -28,7 +42,6 @@ page
   margin-top: 30rpx;
   margin-left: 40rpx;
   margin-right: 100rpx; 
-  border: 1rpx rgb(192, 190, 190) solid; 
 }
 #No1 image
 {
@@ -52,9 +65,28 @@ page
   border: 1rpx rgb(192, 190, 190) solid;
 }
 
-#choose
+.choose
 {
-  margin-top: 50rpx;
+  height: 150rpx;
+  width: 30%;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: larger;
+}
 
+#bottom_nav
+{
+  height: 150rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+#bottom_nav navigator
+{
+  border: 1rpx #eceaea solid;
+  margin-top: 50rpx;
+  margin-left: 40rpx;
+  display: flex; 
+  background-color: #f7f3f3;
 }
