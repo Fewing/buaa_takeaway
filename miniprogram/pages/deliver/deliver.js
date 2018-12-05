@@ -30,7 +30,7 @@ Page({
     var d_limit = new Date(t);
     db.collection('order').where({
         delivertime: com.gte(d_limit),
-        status: '0',
+        status:"0",
       }).orderBy('delivertime', 'asc')
       .get()
       .then(e => {
@@ -77,7 +77,7 @@ Page({
           wx.hideLoading()
           wx.showModal({
             title: '手慢了',
-            content: '该单已经被抢走了',
+            content: '该单已经被抢走，或被取消',
             showCancel: false,
           })
           return
