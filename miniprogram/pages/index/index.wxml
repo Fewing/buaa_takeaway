@@ -2,12 +2,12 @@
 <view class="container">
   <view class="head">
   <view id="pic1"><image  src='logo.jpg'></image></view>
-  <view id="pic2"><image  src='北航.jpg'></image></view>  
+  <view id="pic2"><image  src='buaa.jpg'></image></view>  
   </view>
 
-  <view id="No1"><image src='食堂.jpeg'></image> </view>
-  <view id="No2"><image src='一楼.jpg'></image></view>
-  <view id="No1"><image src='二楼.jpg'></image></view>
+  <view id="No1"><image src='shitang.jpeg'></image> </view>
+  <view id="No2"><image src='yilou.jpg'></image></view>
+  <view id="No1"><image src='erlou.jpg'></image></view>
   <view id="bottom_nav">
   <view class="choose"><navigator url='../want/want'>下单</navigator></view>
   <view class="choose"><navigator url='../deliver/deliver'>接单</navigator></view>
