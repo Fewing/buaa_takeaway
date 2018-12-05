@@ -9,7 +9,7 @@ Page({
    */
   data: {
     order_list: [{
-
+      
     }],
   },
 
@@ -30,14 +30,22 @@ Page({
     var d_limit = new Date(t);
     db.collection('order').where({
         delivertime: com.gte(d_limit),
-        status:'0',
+        status: '0',
       }).orderBy('delivertime', 'asc')
       .get()
       .then(e => {
-        var temp
+        var temp_hours
+        var temp_minutes
         for (var i = 0; i < e.data.length; i++) {
-          temp = e.data[i].delivertime
-          e.data[i].delivertime = temp.getHours() + ":" + temp.getMinutes();
+          temp_hours = e.data[i].delivertime.getHours()
+          temp_minutes = e.data[i].delivertime.getMinutes()
+          if (temp_hours < 10) {
+            temp_hours = "0" + temp_hours
+          }
+          if (temp_minutes < 10) {
+            temp_minutes = "0" + temp_minutes
+          }
+          e.data[i].delivertime = temp_hours + ":" + temp_minutes;
         }
         this.setData({
           order_list: e.data
@@ -79,37 +87,37 @@ Page({
             data: {
               id: id,
             },
-            complete: res =>  {
+            complete: res => {
               db.collection('order').where({
-                _id: id,
-              }).get()
-              .then(e => {
-                if (e.data[0].status == app.globalData.openid) {
-                  wx.hideLoading()
-                  wx.showModal({
-                    title: '接单成功',
-                    content: '接单成功，请尽快按照要求送达',
-                    showCancel: false,
-                    success: function() {
-                      wx.navigateTo({
-                        url: '../my_info/my_info',
-                      })
-                    },
-                  })
-                } else {
-                  wx.hideLoading()
-                  wx.showModal({
-                    title: '接单失败',
-                    content: '请稍后再试',
-                    showCancel: false,
-                    success: function() {
-                      wx.navigateTo({
-                        url: '../my_info/my_info',
-                      })
-                    },
-                  })
-                }
-              })
+                  _id: id,
+                }).get()
+                .then(e => {
+                  if (e.data[0].status == app.globalData.openid) {
+                    wx.hideLoading()
+                    wx.showModal({
+                      title: '接单成功',
+                      content: '接单成功，请尽快按照要求送达',
+                      showCancel: false,
+                      success: function() {
+                        wx.navigateTo({
+                          url: '../my_info/my_info',
+                        })
+                      },
+                    })
+                  } else {
+                    wx.hideLoading()
+                    wx.showModal({
+                      title: '接单失败',
+                      content: '请稍后再试',
+                      showCancel: false,
+                      success: function() {
+                        wx.navigateTo({
+                          url: '../my_info/my_info',
+                        })
+                      },
+                    })
+                  }
+                })
 
             }
           })

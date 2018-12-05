@@ -1,1 +1,2 @@
 /* miniprogram/pages/order_detail/order_detail.wxss */
+@import '../../style/weui.wxss';

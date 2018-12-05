@@ -1,6 +1,6 @@
 <view class="page">
-<view wx:if="{{order_list.length}}=0">
-没有订单
+<view wx:if="{{order_list.length == 0}}">
+当前暂无订单可接
 </view>
   <view wx:for="{{order_list}}" class="page__bd">
     <view class="weui-form-preview">
