@@ -2,6 +2,7 @@
 const app = getApp();
 const db = wx.cloud.database();
 const com = db.command
+const that = this
 Page({
 
   /**
@@ -11,12 +12,142 @@ Page({
     my_order: [{
 
     }],
+    test:0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
+
+  },
+  towant: function() {
+    wx.navigateTo({
+      url: '../want/want',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  todeliver: function() {
+    wx.navigateTo({
+      url: '../deliver/deliver',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  toinfo: function() {
+    wx.navigateTo({
+      url: '../my_info/my_info',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  confirm: function(event) {
+    var id = event.target.id
+    var that=this
+    wx.showModal({
+      title: '确认',
+      content: '您已经收到了货吗？',
+      success(res) {
+        if (res.confirm) {
+          wx.showLoading({
+            title: '请稍后',
+            mask: 'true',
+          })
+          db.collection('order').doc(id)
+            .update({
+              data: {
+                complete: "1",
+              },
+              success: function() {
+                wx.hideLoading()
+                wx.showToast({
+                  title: '确认收货成功',
+                  icon: 'success',
+                  duration: 2000,
+                  complete(res) {
+                    var index = id
+                    
+                    that.setData(
+                      {
+                        my_order: that.data.my_order
+                      }
+                    )
+                  }
+                })
+              }
+            }, )
+        } else if (!res.confirm) {
+          return
+        }
+      }
+    })
+  },
+  cancel: function(event) {
+    var id = event.target.id
+    wx.showModal({
+      title: '确认',
+      content: '确定要取消订单吗？',
+      confirmColor: "#e64340",
+      success: res => {
+        if (res.confirm) {
+          this.setData(
+            {
+              test: 1,
+            }
+          )
+          wx.showLoading({
+            title: '请稍后',
+            mask: 'true',
+          })
+          db.collection('order').doc(id)
+            .update({
+              data: {
+                status: "-1",
+              },
+              success: res => {
+                wx.hideLoading()
+                wx.showToast({
+                  title: '订单取消成功',
+                  icon: 'success',
+                  duration: 2000,
+                  complete: res => {
+                    for (var i = 0; i < this.data.my_order.length; i++)
+                    {
+                      if (this.data.my_order[i]._id == id)
+                      {
+                        this.data.my_order[i].status = '已取消'
+                      }
+                    }
+                    this.setData(
+                      {
+                        my_order: this.data.my_order,
+                      }
+                    )
+                  }
+                })
+              }
+            }, )
+        } else if (!res.confirm) {
+          return
+        }
+      }
+    })
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
     var d = new Date();
     var t = d.getTime();
     t -= 3600000; //一个小时的毫秒数
@@ -68,126 +199,6 @@ Page({
           my_order: e.data
         })
       })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-  towant: function () {
-    wx.navigateTo({
-      url: '../want/want',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-  },
-  todeliver: function () {
-    wx.navigateTo({
-      url: '../deliver/deliver',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-  },
-  toinfo: function () {
-    wx.navigateTo({
-      url: '../my_info/my_info',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-  },
-  confirm: function(event) {
-    var id = event.target.id
-    console.log(id)
-    wx.showModal({
-      title: '确认',
-      content: '您已经收到了货吗？',
-      success(res) {
-        console.log(res.confirm)
-        if (res.confirm) {
-          wx.showLoading({
-            title: '请稍后',
-            mask: 'true',
-          })
-          console.log(id)
-          db.collection('order').doc(id)
-            .update({
-              data: {
-                complete: "1",
-              },
-              success: function() {
-                wx.hideLoading()
-                wx.showToast({
-                  title: '确认收货成功',
-                  icon: 'success',
-                  duration: 2000,
-                  complete(res) {
-                    wx.navigateTo({
-                      url: '../my_info/my_info',
-                      success: function(res) {},
-                      fail: function(res) {},
-                      complete: function(res) {},
-                    })
-                  }
-                })
-              }
-            }, )
-        } else if (!res.confirm) {
-          return
-        }
-      }
-    })
-  },
-  cancel: function(event) {
-    var id = event.target.id
-    wx.showModal({
-      title: '确认',
-      content: '确定要取消订单吗？',
-      confirmColor: "#e64340",
-      success(res) {
-        console.log(res.confirm)
-        if (res.confirm) {
-          wx.showLoading({
-            title: '请稍后',
-            mask: 'true',
-          })
-          db.collection('order').doc(id)
-            .update({
-              data: {
-                status: "-1",
-              },
-              success: function() {
-                wx.hideLoading()
-                wx.showToast({
-                  title: '订单取消成功',
-                  icon: 'success',
-                  duration: 2000,
-                  complete(res) {
-                    wx.navigateTo({
-                      url: '../my_info/my_info',
-                      success: function(res) {},
-                      fail: function(res) {},
-                      complete: function(res) {},
-                    })
-                  }
-                })
-              }
-            }, )
-        } else if (!res.confirm) {
-          return
-        }
-      }
-    })
-  },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
   },
 
   /**

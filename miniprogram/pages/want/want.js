@@ -119,10 +119,10 @@ Page({
       })
       return
     }
-    if (e.detail.value.fee == "") {
+    if (e.detail.value.fee == "" || isNaN(e.detail.value.fee)) {
       wx.showModal({
         title: '错误',
-        content: '请填写跑腿小费',
+        content: '请正确填写小费',
         showCancel: false,
       })
       return

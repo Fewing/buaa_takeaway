@@ -9,7 +9,7 @@ Page({
    */
   data: {
     order_list: [{
-      
+
     }],
   },
 
@@ -24,13 +24,43 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
+
+  },
+  towant: function() {
+    wx.navigateTo({
+      url: '../want/want',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  todeliver: function() {
+    wx.navigateTo({
+      url: '../deliver/deliver',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  toinfo: function() {
+    wx.navigateTo({
+      url: '../my_info/my_info',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
     var d = new Date();
     var t = d.getTime();
     t -= 3600000; //一个小时的毫秒数
     var d_limit = new Date(t);
     db.collection('order').where({
         delivertime: com.gte(d_limit),
-        status:"0",
+        status: "0",
       }).orderBy('delivertime', 'asc')
       .get()
       .then(e => {
@@ -52,62 +82,32 @@ Page({
         })
       })
   },
-  towant: function () {
-    wx.navigateTo({
-      url: '../want/want',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-  },
-  todeliver: function () {
-    wx.navigateTo({
-      url: '../deliver/deliver',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-  },
-  toinfo: function () {
-    wx.navigateTo({
-      url: '../my_info/my_info',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-  },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  towant: function () {
+  towant: function() {
     wx.navigateTo({
       url: '../want/want',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
     })
   },
-  todeliver: function () {
+  todeliver: function() {
     wx.navigateTo({
       url: '../deliver/deliver',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
     })
   },
-  toinfo: function () {
+  toinfo: function() {
     wx.navigateTo({
       url: '../my_info/my_info',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
     })
   },
   order_receive: function(event) {
