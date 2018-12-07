@@ -30,14 +30,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    wx.showLoading({
+      title: '加载中',
+    })
     var d = new Date();
     var t = d.getTime();
     t -= 3600000; //一个小时的毫秒数
     var d_limit = new Date(t);
-    db.collection('order').where({
+    db.collection('order').where(com.and([
+      {
         delivertime: com.gte(d_limit),
         status: "0",
-      }).orderBy('delivertime', 'asc')
+      },
+      {
+        _openid: com.neq(app.globalData.openid),
+      }
+    ])).orderBy('delivertime', 'asc')
       .get()
       .then(e => {
         var temp_hours
@@ -56,6 +64,7 @@ Page({
         this.setData({
           order_list: e.data
         })
+        wx.hideLoading()
       })
   },
 

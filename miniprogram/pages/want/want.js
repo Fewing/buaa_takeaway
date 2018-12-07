@@ -103,6 +103,14 @@ Page({
       })
       return
     }
+    if (e.detail.value.phone == "" || isNaN(e.detail.value.fee)) {
+      wx.showModal({
+        title: '错误',
+        content: '请正确输入手机号',
+        showCancel: false,
+      })
+      return
+    }
     wx.showLoading({
       title: '请稍后',
       mask:'true',
@@ -121,11 +129,13 @@ Page({
           product: e.detail.value.product,
           address: e.detail.value.address,
           fee: e.detail.value.fee,
+          phone: e.detail.value.phone,
           remarks: e.detail.value.remarks,
           createtime: db.serverDate(),
           delivertime:deliver_date,
           status:"0",
           complete:"0",
+          form_id: e.detail.formId,
         },
         success:function()
         {

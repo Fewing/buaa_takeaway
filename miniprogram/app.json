@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/userConsole/userConsole",
     "pages/want/want",
     "pages/deliver/deliver",
     "pages/my_info/my_info",
-    "pages/order_detail/order_detail"
+    "pages/order_detail/order_detail",
+    "pages/regist/regist"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -16,25 +16,32 @@
   },
   "tabBar": {
     "color": "#353535",
-    "selectedColor":"#09BB07",
+    "selectedColor": "#09BB07",
     "list": [
       {
         "pagePath": "pages/index/index",
+        "iconPath": "icons/home.png",
+        "selectedIconPath": "icons/home_green.png",
         "text": "首页"
       },
       {
         "pagePath": "pages/want/want",
+        "iconPath": "icons/want.png",
+        "selectedIconPath": "icons/want_green.png",
         "text": "下单"
       },
       {
-        "pagePath":"pages/deliver/deliver",
-        "text":"接单"
+        "pagePath": "pages/deliver/deliver",
+        "iconPath": "icons/order.png",
+        "selectedIconPath": "icons/order_green.png",
+        "text": "接单"
       },
       {
-        "pagePath":"pages/my_info/my_info",
-        "text":"我的"
+        "pagePath": "pages/my_info/my_info",
+        "iconPath": "icons/me.png",
+        "selectedIconPath": "icons/me_green.png",
+        "text": "我的"
       }
     ]
   }
-  
 }

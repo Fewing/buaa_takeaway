@@ -37,3 +37,15 @@
   background-color: rgba(82, 219, 40, 0.123);
 
 }
+.deliver_status
+{
+  font-size: 40rpx;
+}
+.red
+{
+  color:#e64340;
+}
+.green
+{
+  color:#09bb07;
+}

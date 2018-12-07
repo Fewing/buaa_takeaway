@@ -3,6 +3,7 @@ const app = getApp();
 const db = wx.cloud.database();
 const com = db.command
 const that = this
+var sliderWidth = 96
 Page({
 
   /**
@@ -12,16 +13,33 @@ Page({
     my_order: [{
 
     }],
-    test: 0,
+    my_deliver:[{}],
+    tabs: ["订单", "接单", "信息"],
+    activeIndex: 0,
+    sliderOffset: 0,
+    sliderLeft: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
+          sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+        });
+      }
+    });
   },
-
+  tabClick: function (e) {
+    this.setData({
+      sliderOffset: e.currentTarget.offsetLeft,
+      activeIndex: e.currentTarget.id
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -169,6 +187,54 @@ Page({
         }
         this.setData({
           my_order: e.data
+        })
+      })
+    var d1 = new Date();
+    var t1 = d1.getTime();
+    t1 -= 86400000; //一个小时的毫秒数
+    var d1_limit = new Date(t1);
+    db.collection('order').where(
+      {
+        delivertime: com.gte(d1_limit),
+        status: app.globalData.openid,
+      }
+        )
+      .orderBy("complete", "asc").orderBy('delivertime', 'desc')
+      .get()
+      .then(e_ => {
+        var temp_hours
+        var temp_minutes
+        var temp_year
+        var temp_month
+        var temp_date
+        for (var i = 0; i < e_.data.length; i++) {
+          temp_year = e_.data[i].delivertime.getFullYear()
+          temp_month = e_.data[i].delivertime.getMonth() + 1
+          temp_date = e_.data[i].delivertime.getDate()
+          temp_hours = e_.data[i].delivertime.getHours()
+          temp_minutes = e_.data[i].delivertime.getMinutes()
+          if (temp_hours < 10) {
+            temp_hours = "0" + temp_hours
+          }
+          if (temp_minutes < 10) {
+            temp_minutes = "0" + temp_minutes
+          }
+          e_.data[i].delivertime = temp_year + "-" + temp_month + "-" + temp_date + " " + temp_hours + ":" + temp_minutes;
+          if (e_.data[i].status == "0") {
+            e_.data[i].status = "未接单"
+          } else if (e_.data[i].status == "-1") {
+            e_.data[i].status = "已取消"
+          } else {
+            if (e_.data[i].complete == "0") {
+              e_.data[i].status = "已接单，请递送"
+            }
+            if (e_.data[i].complete == "1") {
+              e_.data[i].status = "已完成"
+            }
+          }
+        }
+        this.setData({
+          my_deliver: e_.data
         })
       })
   },

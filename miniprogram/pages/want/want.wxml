@@ -1,12 +1,12 @@
 <!--miniprogram/pages/want/want.wxml-->
-<form bindsubmit="order_submit">
+<form bindsubmit="order_submit" report-submit="true">
   <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__hd">
         <view class="weui-label">商品名称</view>
       </view>
       <view class="weui-cell__bd">
-        <input name="product" class="weui-input" />
+        <input name="product" class="weui-input" placeholder="请尽可能详细填写，加上食堂楼层" />
       </view>
     </view>
     <view class="weui-cell weui-cell_input weui-cell_vcode">
@@ -22,7 +22,15 @@
         <view class="weui-label">跑腿小费</view>
       </view>
       <view class="weui-cell__bd">
-        <input name="fee" class="weui-input" placeholder="只输入数字，单位“元”" />
+        <input type="digit" name="fee" class="weui-input" placeholder="只输入数字，单位“元”" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input weui-cell_vcode">
+      <view class="weui-cell__hd">
+        <view class="weui-label">联系方式</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input type="number" name="phone" class="weui-input" placeholder="仅接单人可见，方便联系" />
       </view>
     </view>
     <view class="weui-cell weui-cell_input weui-cell_vcode">

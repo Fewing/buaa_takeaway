@@ -16,7 +16,7 @@
           <view class="weui-form-preview__value">{{item.product}}</view>
         </view>
         <view class="weui-form-preview__item">
-          <view class="weui-form-preview__label">地址</view>
+          <view class="weui-form-preview__label">送货地址</view>
           <view class="weui-form-preview__value">{{item.address}}</view>
         </view>
         <view class="weui-form-preview__item">
