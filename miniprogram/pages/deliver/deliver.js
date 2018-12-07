@@ -26,30 +26,6 @@ Page({
   onReady: function() {
 
   },
-  towant: function() {
-    wx.navigateTo({
-      url: '../want/want',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-  },
-  todeliver: function() {
-    wx.navigateTo({
-      url: '../deliver/deliver',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-  },
-  toinfo: function() {
-    wx.navigateTo({
-      url: '../my_info/my_info',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -86,30 +62,6 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  towant: function() {
-    wx.navigateTo({
-      url: '../want/want',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-  },
-  todeliver: function() {
-    wx.navigateTo({
-      url: '../deliver/deliver',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-  },
-  toinfo: function() {
-    wx.navigateTo({
-      url: '../my_info/my_info',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-  },
   order_receive: function(event) {
     var id = event.target.id
     wx.showLoading({
@@ -126,8 +78,10 @@ Page({
             title: '手慢了',
             content: '该单已经被抢走，或被取消',
             showCancel: false,
+            success: res =>{
+              this.onShow()
+            }
           })
-          return
         } else {
           wx.cloud.callFunction({
             name: "order",
@@ -146,7 +100,7 @@ Page({
                       content: '接单成功，请尽快按照要求送达',
                       showCancel: false,
                       success: function() {
-                        wx.navigateTo({
+                        wx.switchTab({
                           url: '../my_info/my_info',
                         })
                       },
@@ -157,10 +111,8 @@ Page({
                       title: '接单失败',
                       content: '请稍后再试',
                       showCancel: false,
-                      success: function() {
-                        wx.navigateTo({
-                          url: '../my_info/my_info',
-                        })
+                      success: res => {
+                        this.onShow()
                       },
                     })
                   }

@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/userConsole/userConsole",
-    "pages/database_test/database_test",
     "pages/want/want",
     "pages/deliver/deliver",
     "pages/my_info/my_info",
@@ -14,5 +13,28 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "北航打饭邦",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#353535",
+    "selectedColor":"#09BB07",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/want/want",
+        "text": "下单"
+      },
+      {
+        "pagePath":"pages/deliver/deliver",
+        "text":"接单"
+      },
+      {
+        "pagePath":"pages/my_info/my_info",
+        "text":"我的"
+      }
+    ]
   }
+  
 }

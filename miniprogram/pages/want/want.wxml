@@ -57,8 +57,3 @@
     </view>
   </view>
 </form>
-<view id="bottom_nav">
-  <button bindtap='towant'>下单</button>
-  <button bindtap='todeliver'>接单</button>
-  <button bindtap='toinfo'>我的</button>
-</view>

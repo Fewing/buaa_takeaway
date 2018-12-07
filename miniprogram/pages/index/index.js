@@ -27,12 +27,17 @@ Page({
       }
     })*/
     // 调用云函数
+    wx.showLoading({
+      title: '请稍后',
+      mask: true,
+    })
     wx.cloud.callFunction({
       name: 'login',
       data: {},
       success: res => {
         //console.log('[云函数] [login] user openid: ', res.result.openid)
         app.globalData.openid = res.result.openid
+        wx.hideLoading()
       },
       fail: err => {
         //console.error('[云函数] [login] 调用失败', err)
@@ -48,30 +53,6 @@ Page({
         userInfo: e.detail.userInfo
       })
     }
-  },
-  towant: function() {
-    wx.navigateTo({
-      url: '../want/want',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-  },
-  todeliver: function() {
-    wx.navigateTo({
-      url: '../deliver/deliver',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-  },
-  toinfo: function() {
-    wx.navigateTo({
-      url: '../my_info/my_info',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
   },
   onGetOpenid: function() {
     // 调用云函数

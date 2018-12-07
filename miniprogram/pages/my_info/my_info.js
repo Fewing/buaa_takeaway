@@ -12,7 +12,7 @@ Page({
     my_order: [{
 
     }],
-    test:0,
+    test: 0,
   },
 
   /**
@@ -28,37 +28,13 @@ Page({
   onReady: function() {
 
   },
-  towant: function() {
-    wx.navigateTo({
-      url: '../want/want',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-  },
-  todeliver: function() {
-    wx.navigateTo({
-      url: '../deliver/deliver',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-  },
-  toinfo: function() {
-    wx.navigateTo({
-      url: '../my_info/my_info',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-  },
   confirm: function(event) {
     var id = event.target.id
-    var that=this
+    var that = this
     wx.showModal({
       title: '确认',
       content: '您已经收到了货吗？',
-      success(res) {
+      success: res => {
         if (res.confirm) {
           wx.showLoading({
             title: '请稍后',
@@ -69,20 +45,21 @@ Page({
               data: {
                 complete: "1",
               },
-              success: function() {
+              success: res => {
                 wx.hideLoading()
                 wx.showToast({
                   title: '确认收货成功',
                   icon: 'success',
                   duration: 2000,
-                  complete(res) {
-                    var index = id
-                    
-                    that.setData(
-                      {
-                        my_order: that.data.my_order
+                  complete: res => {
+                    for (var i = 0; i < this.data.my_order.length; i++) {
+                      if (this.data.my_order[i]._id == id) {
+                        this.data.my_order[i].status = '已完成'
                       }
-                    )
+                    }
+                    this.setData({
+                      my_order: this.data.my_order,
+                    })
                   }
                 })
               }
@@ -101,11 +78,9 @@ Page({
       confirmColor: "#e64340",
       success: res => {
         if (res.confirm) {
-          this.setData(
-            {
-              test: 1,
-            }
-          )
+          this.setData({
+            test: 1,
+          })
           wx.showLoading({
             title: '请稍后',
             mask: 'true',
@@ -122,18 +97,15 @@ Page({
                   icon: 'success',
                   duration: 2000,
                   complete: res => {
-                    for (var i = 0; i < this.data.my_order.length; i++)
-                    {
-                      if (this.data.my_order[i]._id == id)
-                      {
+                    for (var i = 0; i < this.data.my_order.length; i++) {
+                      if (this.data.my_order[i]._id == id) {
                         this.data.my_order[i].status = '已取消'
                       }
                     }
-                    this.setData(
-                      {
-                        my_order: this.data.my_order,
-                      }
-                    )
+                    this.setData({
+                      my_order: this.data.my_order,
+                    })
+                    
                   }
                 })
               }
