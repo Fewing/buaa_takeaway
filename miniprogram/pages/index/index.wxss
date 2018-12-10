@@ -19,20 +19,12 @@ page
 {
   margin-left: 10rpx;
 }
-#pic2
-{
-  margin-left: 60rpx;
-}
 #pic1 image
 {
-  height: 180rpx;
-  width: 180rpx;
+  margin-top: 12rpx;
+  height: 150rpx;
+  width: 150rpx;
 
-}
-#pic2 image
-{
-  height: 180rpx;
-  width:400rpx;
 }
 
 #No1
@@ -83,4 +75,9 @@ page
   font-size: larger;
   background-color: rgba(82, 219, 40, 0.123);
 
+}
+
+#note button
+{
+  margin-left: 550rpx;
 }

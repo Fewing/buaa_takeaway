@@ -2,10 +2,13 @@
 <view class="container">
   <view class="head">
   <view id="pic1"><image  src='logo.jpg'></image></view>
-  <view id="pic2"><image  src='buaa.jpg'></image></view>  
   </view>
 
   <view id="No1"><image src='shitang.jpeg'></image> </view>
   <view id="No2"><image src='yilou.jpg'></image></view>
   <view id="No1"><image src='erlou.jpg'></image></view>
+
+  <view id='note'>
+    <button class="weui-btn" type="default" bindtap="openAlert">公告</button>
+  </view>
 </view>

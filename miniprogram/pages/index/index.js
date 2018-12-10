@@ -2,6 +2,17 @@
 const app = getApp()
 const db = wx.cloud.database()
 Page({
+  openAlert: function () {
+    wx.showModal({
+      content: '欢迎使用北航打饭邦。请勿恶意下单、接单',
+      showCancel: false,
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        }
+      }
+    });
+  }
   data: {
     avatarUrl: './user-unlogin.png',
     userInfo: {},
