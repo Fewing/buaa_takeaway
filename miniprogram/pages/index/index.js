@@ -1,18 +1,24 @@
 //index.js
 const app = getApp()
 const db = wx.cloud.database()
+var openid
 Page({
   openAlert: function () {
-    wx.showModal({
+    /*wx.showModal({
       content: '欢迎使用北航打饭邦。请勿恶意下单、接单',
       showCancel: false,
       success: function (res) {
         if (res.confirm) {
-          console.log('用户点击确定')
         }
       }
-    });
-  }
+    });*/
+    wx.navigateTo({
+      url: '../regist/regist',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
   data: {
     avatarUrl: './user-unlogin.png',
     userInfo: {},
@@ -55,34 +61,66 @@ Page({
       }
     })
   },
-
-  onGetUserInfo: function(e) {
-    if (!this.logged && e.detail.userInfo) {
-      this.setData({
-        logged: true,
-        avatarUrl: e.detail.userInfo.avatarUrl,
-        userInfo: e.detail.userInfo
-      })
-    }
+  onReady: function () {
   },
-  onGetOpenid: function() {
-    // 调用云函数
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-        wx.navigateTo({
-          url: '../userConsole/userConsole',
-        })
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-        wx.navigateTo({
-          url: '../deployFunctions/deployFunctions',
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    var now = new Date()
+    db.collection('user_info').where({
+      _openid: app.globalData.openid
+    }).get().then(res => {
+      if(res.data.length == 1)
+      {
+        if( now<= res.data[0].ban_time)
+        {
+          wx.redirectTo({
+            url: '../banned/banned',
+          })
+        }
+      }
+      else
+      {
+        wx.redirectTo({
+          url: '../regist/regist',
         })
       }
     })
   },
-})
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+}) 

@@ -1,0 +1,14 @@
+/* miniprogram/pages/banned/banned.wxss */
+.red
+{
+  color: #e64340;
+}
+.page
+{
+  display: block;
+  margin: 10rpx;
+}
+.blank
+{
+  height: 30rpx;
+}

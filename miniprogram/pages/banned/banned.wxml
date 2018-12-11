@@ -1,0 +1,12 @@
+<!--miniprogram/pages/banned/banned.wxml-->
+<view class="page">
+  <view class="red">因为您遭到投诉，或有其他恶意行为，将被封禁到：{{bantime}}</view>
+  <view>在此之前您将无法使用本服务，如有任何问题请使用意见反馈按钮,或者您可以发送邮件到：yangzheyu00@hotmail.com
+  </view>
+  <view class="blank"></view>
+  <view class="page__bd">
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" open-type='feedback'>反馈</button>
+    </view>
+  </view>
+</view>

@@ -1,4 +1,5 @@
 // miniprogram/pages/regist/regist.js
+const db = wx.cloud.database()
 Page({
 
   /**
@@ -71,6 +72,57 @@ Page({
 
   },
 
+  regist: function(e)
+  {
+    if (e.detail.value.name == "")
+    {
+      wx.showModal({
+        title: '错误',
+        content: '请输入姓名',
+        showCancel: false,
+      })
+      return
+    }
+    if (e.detail.value.number == "") {
+      wx.showModal({
+        title: '错误',
+        content: '请输入学号',
+        showCancel: false,
+      })
+      return
+    }
+    wx.showLoading({
+      title: '请稍后',
+      mask: 'ture',
+    })
+    db.collection('user_info').add(
+      {
+        data: {
+          name: e.detail.value.name,
+          number: e.detail.value.number,
+          createtime: db.serverDate(),
+          ban_time: db.serverDate({
+            offset: -60 * 60 * 1000
+          }),
+          score:0,
+          deliver_number:0,
+        },
+        success: function(){
+          wx.hideLoading()
+          wx.showModal({
+            title: '成功',
+            content: '注册成功！欢迎使用北航打饭邦',
+            showCancel: false,
+            success: function () {
+              wx.switchTab({
+                url: '../index/index',
+              })
+            },
+          })
+        }
+      }
+    )
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

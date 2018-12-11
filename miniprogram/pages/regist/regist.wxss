@@ -1,1 +1,2 @@
 /* miniprogram/pages/regist/regist.wxss */
+@import '../../style/weui.wxss';
