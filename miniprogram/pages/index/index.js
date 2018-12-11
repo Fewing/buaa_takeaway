@@ -4,20 +4,14 @@ const db = wx.cloud.database()
 var openid
 Page({
   openAlert: function () {
-    /*wx.showModal({
+    wx.showModal({
       content: '欢迎使用北航打饭邦。请勿恶意下单、接单',
       showCancel: false,
       success: function (res) {
         if (res.confirm) {
         }
       }
-    });*/
-    wx.navigateTo({
-      url: '../regist/regist',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
+    });
   },
   data: {
     avatarUrl: './user-unlogin.png',
