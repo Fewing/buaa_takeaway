@@ -4,7 +4,12 @@ page
 {
   background: #f6f6f6;
   display: block;
-
+}
+.container image
+{
+  position:absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .head

@@ -1,7 +1,8 @@
 <!--index.wxml-->
 <view class="container">
+  <image src='background.png'></image>
   <view class="head">
-  <view id="pic1"><image  src='logo.jpg'></image></view>
+    <view id="pic1"><image  src='logo.jpg'></image></view>
   </view>
 
   <view id="No1"><image src='shitang.jpeg'></image> </view>
