@@ -5,7 +5,7 @@ var openid
 Page({
   openAlert: function () {
     wx.showModal({
-      content: '欢迎使用北航打饭邦。请勿恶意下单、接单',
+      content: '欢迎使用北航打饭邦。 诚信第一，请勿恶意下单、接单。',
       showCancel: false,
       success: function (res) {
         if (res.confirm) {

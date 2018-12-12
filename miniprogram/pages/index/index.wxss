@@ -34,6 +34,7 @@ page
   margin-top: 30rpx;
   margin-left: 40rpx;
   margin-right: 100rpx; 
+  box-shadow: 0 3rpx 5rpx 1rpx #5c514a99;
 }
 #No1 image
 {
