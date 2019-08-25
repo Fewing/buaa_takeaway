@@ -13,6 +13,8 @@
 	"projectname": "%E5%8C%97%E8%88%AA%E6%89%93%E9%A5%AD%E9%82%A6",
 	"libVersion": "2.4.1",
 	"compileType": "miniprogram",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
