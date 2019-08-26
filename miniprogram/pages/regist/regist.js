@@ -13,49 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    /*wx.startWifi({
-      success: res=>{
-        wx.getConnectedWifi({
-          success: res=> {
-            if (res.wifi.SSID == 'BUAA-Mobile' || res.wifi.SSID == 'BUAA-WiFi')
-            {
-            }
-            else 
-            {
-              wx.switchTab({
-                url: '../index/index',
-              })
-            }
-          },
-          fail: res=> {
-            console.log(res)
-            wx.showModal({
-              title: '连接WiFi',
-              content: '请连接校园网WiFi以完成注册',
-              showCancel: false,
-              success(res) {
-                wx.switchTab({
-                  url: '../index/index',
-                })
-              }
-            })
-          }
-        })
-      },
-      fail: res => {
-        console.log(res)
-        wx.showModal({
-          title: '连接WiFi',
-          content: '请连接校园网WiFi以完成注册',
-          showCancel: false,
-          success (res) {
-            wx.switchTab({
-              url: '../index/index',
-            })
-          }
-        })
-      }
-    })*/
+    
   },
 
   /**
@@ -71,7 +29,22 @@ Page({
   onShow: function () {
 
   },
+  doUpload: function () {
+    // 选择图片
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
 
+        wx.showLoading({
+          title: '上传中',
+        })
+        const filePath = res.tempFilePaths[0]
+        
+      }
+    })
+  },
   regist: function(e)
   {
     if (e.detail.value.name == "")
