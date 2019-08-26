@@ -1,4 +1,5 @@
 // 云函数入口文件
+//接单调用的云函数
 const cloud = require('wx-server-sdk')
 cloud.init()
 const db = cloud.database()

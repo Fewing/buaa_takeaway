@@ -22,20 +22,10 @@
     <view class="weui-cells__tips">所有信息仅用于认证，请务必如实填写</view>
   </view>
   <view></view>
-  <view class="page">
-    <view class="page__hd">
-      <text class="page__title">image</text>
-      <text class="page__desc">图片</text>
-    </view>
-    <view class="page__bd">
-      <view class="section section_gap" wx:for="{{array}}" wx:for-item="item">
-        <view class="section__title">{{item.text}}</view>
-        <view class="section__ctn">
-          <image style="width: 200px; height: 200px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
-        </view>
-      </view>
-    </view>
+  <view class="uploadimage">
+    <image src="{{card_image}}" class="uploadimage"></image>
   </view>
+  <view class="weui-cells__tips" style="color:red">请上传校园卡人脸页图片完成验证(目前仅适用于北航本科生)</view>
   <view class="page">
     <view class="page">
       <view class="page__bd">

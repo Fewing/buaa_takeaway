@@ -1,2 +1,8 @@
 /* miniprogram/pages/order_detail/order_detail.wxss */
 @import '../../style/weui.wxss';
+.uploadimage{
+  margin: 0rpx;
+  display: flex;
+  vertical-align: middle;
+  height: 50%;
+}

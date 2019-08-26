@@ -1,4 +1,5 @@
 // 云函数入口文件
+//获取推送token
 const cloud = require('wx-server-sdk')
 cloud.init()
 const db = cloud.database()
