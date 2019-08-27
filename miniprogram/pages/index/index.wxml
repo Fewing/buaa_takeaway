@@ -1,15 +1,8 @@
 <!--index.wxml-->
 <view class="container">
-  <image src='background.png'></image>
-  <view class="head">
-    <view id="pic1"><image  src='logo.jpg'></image></view>
-  </view>
-
-  <view id="No1"><image src='shitang.jpeg'></image> </view>
-  <view id="No2"><image src='yilou.jpg'></image></view>
-  <view id="No1"><image src='erlou.jpg'></image></view>
-
   <view id='note'>
-    <button class="weui-btn" type="default" bindtap="openAlert">公告</button>
+    <button class="weui-btn" type="default" bindtap="openAlert">页面一</button>
+    <button class="weui-btn" type="default" bindtap="openAlert">页面二</button>
+    <button class="weui-btn" type="default" bindtap="openAlert">页面三</button>
   </view>
 </view>

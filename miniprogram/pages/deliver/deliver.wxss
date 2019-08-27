@@ -1,5 +1,10 @@
 /* miniprogram/pages/deliver/deliver.wxss */
 @import '../../style/weui.wxss';
+page 
+{
+  background: #f6f6f6;
+  display: block;
+}
 .weui-form-preview{
     margin-bottom: 25px;
 }

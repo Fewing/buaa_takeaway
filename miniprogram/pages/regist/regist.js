@@ -9,6 +9,8 @@ Page({
    */
   data: {
     card_image: "",
+    campus: ['学院路校区','沙河校区'],
+    campus_index: 0,
   },
 
   /**
@@ -53,6 +55,11 @@ Page({
       }
     })
   },
+  bindPickerChange: function (e) {
+    this.setData({
+      campus_index: e.detail.value
+    })
+  },
   regist: function (e) {
     if (e.detail.value.name == "") {
       wx.showModal({
@@ -78,10 +85,27 @@ Page({
       })
       return
     }
+    if (this.data.phone == "") {
+      wx.showModal({
+        title: '错误',
+        content: '请填写手机号',
+        showCancel: false,
+      })
+      return
+    }
+    if (this.data.card_image == "") {
+      wx.showModal({
+        title: '错误',
+        content: '请填写默认地址',
+        showCancel: false,
+      })
+      return
+    }
     wx.showLoading({
       title: '请稍后',
       mask: 'ture',
     })
+    var that=this
     wx.request({
       url: 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=O5b8MFdxYncpjmiNGUrbZqtF&client_secret=GyEBap97oyYSICfiF6Vp87YtaSPks5Ol&',
       success(res) {
@@ -97,7 +121,7 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'
           },
           success(res) {
-            console.log(res.data.data.ret)
+            //console.log(res.data.data.ret) //百度api返回值
             var info = res.data.data.ret
             if (info[0].word == e.detail.value.name && info[1].word == e.detail.value.number) {
               db.collection('user_info').add(
@@ -105,12 +129,13 @@ Page({
                   data: {
                     name: e.detail.value.name,
                     number: e.detail.value.number,
+                    campus:that.data.campus_index,//0为学院路校区，1为沙河校区
+                    phone:e.detail.value.phone,
+                    address:e.detail.value.address,
                     createtime: db.serverDate(),
                     ban_time: db.serverDate({
                       offset: -60 * 60 * 1000
                     }),
-                    score: 0,
-                    deliver_number: 0,
                   },
                   success: function () {
                     wx.hideLoading()
@@ -137,7 +162,6 @@ Page({
                 showCancel: false,
               })
             }
-            return;
           }
         })
       }

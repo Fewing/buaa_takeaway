@@ -12,6 +12,7 @@ App({
 
     this.globalData = {
       openid:"123",
+      campus:0,
     }
   }
 })

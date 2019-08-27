@@ -1,4 +1,4 @@
-// miniprogram/pages/order_detail/order_detail.js
+// miniprogram/pages/order/order.js
 Page({
 
   /**

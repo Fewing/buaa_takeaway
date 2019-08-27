@@ -4,15 +4,15 @@
     "pages/want/want",
     "pages/deliver/deliver",
     "pages/my_info/my_info",
-    "pages/order_detail/order_detail",
     "pages/regist/regist",
-    "pages/banned/banned"
+    "pages/banned/banned",
+    "pages/order/order"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "北航打饭邦",
+    "navigationBarTitleText": "航概打饭邦",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

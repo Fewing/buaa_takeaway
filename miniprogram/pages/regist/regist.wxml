@@ -17,13 +17,42 @@
         <input name="number" class="weui-input" placeholder="" />
       </view>
     </view>
-    <view class="weui-cell weui-cell_input weui-cell_vcode">
+    <view class="weui-cell weui-cell_input weui-cell_vcode"></view>
+    <view class="weui-cells__tips">以上信息仅用于认证，请务必如实填写</view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">校区</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="selector" value="{{campus_index}}" range="{{campus}}" bindchange="bindPickerChange">
+          <view class="weui-input" style='color:#09BB07'>{{campus[campus_index]}}</view>
+        </picker>
+      </view>
     </view>
-    <view class="weui-cells__tips">所有信息仅用于认证，请务必如实填写</view>
+    <view class="weui-cell weui-cell_input weui-cell_vcode"></view>
+    <view class="weui-cells__tips">你只会看到所选校区的订单（可在“我的”页修改校区）</view>
+    <view class="weui-cell weui-cell_input weui-cell_vcode">
+      <view class="weui-cell__hd">
+        <view class="weui-label">手机号</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input name="phone" class="weui-input" placeholder="" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input weui-cell_vcode"></view>
+    <view class="weui-cell weui-cell_input weui-cell_vcode">
+      <view class="weui-cell__hd">
+        <view class="weui-label">默认地址</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input name="address" class="weui-input" placeholder="" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input weui-cell_vcode"></view>
+    <view class="weui-cells__tips">这些信息将用于自动填充</view>
   </view>
-  <view></view>
   <view class="uploadimage">
-    <image src="{{card_image}}" class="uploadimage"></image>
+    <image src="{{card_image}}" class="uploadimage" mode="aspectFit" ></image>
   </view>
   <view class="weui-cells__tips" style="color:red">请上传校园卡人脸页图片完成验证(目前仅适用于北航本科生)</view>
   <view class="page">

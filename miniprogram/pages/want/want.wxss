@@ -4,6 +4,11 @@
 * Licensed under the MIT license
 */
 @import '../../style/weui.wxss';
+page 
+{
+  background: #f6f6f6;
+  display: block;
+}
 .page__bd{
 height: 100%;
 }

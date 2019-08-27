@@ -1,5 +1,10 @@
 /* miniprogram/pages/my_info/my_info.wxss */
 @import '../../style/weui.wxss';
+page 
+{
+  background: #f6f6f6;
+  display: block;
+}
 .touimage{
   margin: 0rpx;
   display: flex;

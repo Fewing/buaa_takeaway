@@ -5,4 +5,5 @@
   display: flex;
   vertical-align: middle;
   height: 400rpx;
+  justify-content: center
 }
