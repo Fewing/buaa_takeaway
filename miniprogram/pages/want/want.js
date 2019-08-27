@@ -1,75 +1,74 @@
-// miniprogram/pages/want/want.js
+// miniprogram/pages/want/want.js 
 const db = wx.cloud.database()
 Page({
 
-  /**
-   * 页面的初始数据
+  /** 
+   * 页面的初始数据 
    */
   data: {
     deliver_time: '立即',
-    now:new Date().getHours + ":" + new Date().getMinutes,
+    now: new Date().getHours + ":" + new Date().getMinutes,
   },
 
-  /**
-   * 生命周期函数--监听页面加载
+  /** 
+   * 生命周期函数--监听页面加载 
    */
   onLoad: function (options) {
     var date = new Date()
     this.setData(
       {
-        now: date.getHours()+":"+date.getMinutes()
+        now: date.getHours() + ":" + date.getMinutes()
       }
     )
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
+  /** 
+   * 生命周期函数--监听页面初次渲染完成 
    */
   onReady: function () {
   },
 
-  /**
-   * 生命周期函数--监听页面显示
+  /** 
+   * 生命周期函数--监听页面显示 
    */
   onShow: function () {
 
   },
-  /**
-   * 生命周期函数--监听页面隐藏
+  /** 
+   * 生命周期函数--监听页面隐藏 
    */
   onHide: function () {
 
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
+  /** 
+   * 生命周期函数--监听页面卸载 
    */
   onUnload: function () {
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
+  /** 
+   * 页面相关事件处理函数--监听用户下拉动作 
    */
   onPullDownRefresh: function () {
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
+  /** 
+   * 页面上拉触底事件的处理函数 
    */
   onReachBottom: function () {
 
   },
 
-  /**
-   * 用户点击右上角分享
+  /** 
+   * 用户点击右上角分享 
    */
   onShareAppMessage: function () {
 
   },
-  time_submit:function (e)
-  {
+  time_submit: function (e) {
     this.setData(
       {
         deliver_time: e.detail.value
@@ -77,21 +76,19 @@ Page({
     )
   },
   order_submit: function (e) {
-    if(e.detail.value.product=="")
-    {
+    if (e.detail.value.product == "") {
       wx.showModal({
         title: '错误',
         content: '请填写商品名称',
-        showCancel:false,
+        showCancel: false,
       })
       return
     }
-    if(e.detail.value.address=="")
-    {
+    if (e.detail.value.address == "") {
       wx.showModal({
         title: '错误',
         content: '请填写送货地点',
-        showCancel:false,
+        showCancel: false,
       })
       return
     }
@@ -113,13 +110,12 @@ Page({
     }
     wx.showLoading({
       title: '请稍后',
-      mask:'true',
+      mask: 'true',
     })
-    var deliver_date= new Date();
-    if(this.data.deliver_time!="立即")
-    {
-      var hours=this.data.deliver_time[0]+this.data.deliver_time[1];
-      var minutes=this.data.deliver_time[3]+this.data.deliver_time[4];
+    var deliver_date = new Date();
+    if (this.data.deliver_time != "立即") {
+      var hours = this.data.deliver_time[0] + this.data.deliver_time[1];
+      var minutes = this.data.deliver_time[3] + this.data.deliver_time[4];
       deliver_date.setHours(hours);
       deliver_date.setMinutes(minutes);
     }
@@ -132,19 +128,19 @@ Page({
           phone: e.detail.value.phone,
           remarks: e.detail.value.remarks,
           createtime: db.serverDate(),
-          delivertime:deliver_date,
-          status:"0",
-          complete:"0",
+          delivertime: deliver_date,
+          type:0,
+          status: "0",
+          complete: "0",
           form_id: e.detail.formId,
         },
-        success:function()
-        {
+        success: function () {
           wx.hideLoading()
           wx.showModal({
             title: '下单成功',
             content: '您已成功下单，订单将最多为您保留到送达时间后一小时',
-            showCancel:false,
-            success:function(){
+            showCancel: false,
+            success: function () {
               wx.switchTab({
                 url: '../my_info/my_info',
               })

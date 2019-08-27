@@ -1,6 +1,0 @@
-/* miniprogram/pages/order/order.wxss */
-page 
-{
-  background: #f6f6f6;
-  display: block;
-}

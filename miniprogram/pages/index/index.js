@@ -16,7 +16,12 @@ Page({
   },
   to_order: function(){
     wx.navigateTo({
-      url: '../order/order'
+      url: '../express/express'
+    })
+  },
+  to_customize: function () {
+    wx.navigateTo({
+      url: '../customize/customize'
     })
   },
   data: {

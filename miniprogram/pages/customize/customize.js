@@ -1,16 +1,11 @@
-// miniprogram/pages/order/order.js
+// miniprogram/pages/customize/customize.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    phone:"",
-    company:"",
-    reach_address:"",
-    remark:"",
-    deliver_address:"",
-    fee:'',
+
   },
 
   /**
@@ -33,19 +28,12 @@ Page({
   onShow: function () {
 
   },
-  update_company:function(e){
-    this.setData({
-      company: e.detail.detail.value
-    })
-  },
-  submit:function(){
 
-  },
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**
