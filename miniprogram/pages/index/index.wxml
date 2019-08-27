@@ -1,8 +1,8 @@
 <!--index.wxml-->
 <view class="container">
   <view id='note'>
-    <button class="weui-btn" type="default" bindtap="openAlert">页面一</button>
-    <button class="weui-btn" type="default" bindtap="openAlert">页面二</button>
-    <button class="weui-btn" type="default" bindtap="openAlert">页面三</button>
+    <i-button bind:click="to_order" type="primary" size="large">下单页</i-button>
+    <i-button bind:click="openAlert" type="primary">下单页</i-button>
+    <i-button bind:click="openAlert" type="primary">下单页</i-button>
   </view>
 </view>
