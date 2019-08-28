@@ -110,7 +110,7 @@ Page({
     if (that.data.fee == "" ) {
       wx.showModal({
         title: '错误',
-        content: '请正确输入手机号',
+        content: '请填写跑腿小费',
         showCancel: false,
       })
       return
@@ -138,6 +138,9 @@ Page({
           phone: that.data.phone,
           remarks: that.data.remark,
           createtime: db.serverDate(),
+          reserved_time: db.serverDate({
+            offset: 60 * 60 * 1000 * 24,
+          }),
           type:1,
           status: "0",
           complete: "0",
@@ -147,7 +150,7 @@ Page({
           wx.hideLoading()
           wx.showModal({
             title: '下单成功',
-            content: '您已成功下单，订单将最多为您保留到送达时间后一小时',
+            content: '您已成功下单，快递订单保留时间为一天，您也可以手动取消',
             showCancel: false,
             success: function () {
               wx.switchTab({

@@ -24,6 +24,11 @@ Page({
       url: '../customize/customize'
     })
   },
+  to_meal: function () {
+    wx.navigateTo({
+      url: '../meal/meal'
+    })
+  },
   data: {
   },
   onLoad: function() {

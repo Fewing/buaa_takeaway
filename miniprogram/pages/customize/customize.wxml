@@ -1,2 +1,28 @@
-<!--miniprogram/pages/customize/customize.wxml-->
-<text>miniprogram/pages/customize/customize.wxml</text>
+<form bindsubmit="order_submit" report-submit="true">
+    <i-row>
+      <i-col span="24" i-class="col-class">
+        <view class="top_bg">
+          <i-row>
+            <i-col span="22" i-class="col-class" offset="1">
+              <view class="top"></view>
+              <i-icon type="setup" size="32" color="#1c2438" />
+              <text style="color:#1c2438">自由任务</text>
+              <i-panel style="padding=10rpx">
+                <i-input value="{{ product }}" title="任务简介" placeholder="简洁描述，建议不超过10个字" bind:change="update_product" maxlength="50" />
+                <i-input value="{{ reach_address }}" type="text" title="任务地点" placeholder="" maxlength="50" bind:change="update_reach_address" />
+                <i-input value="{{ phone }}" type="number" title="联系电话" placeholder="" maxlength="50" bind:change="update_phone" />
+                <i-input value="{{ remark }}" title="任务详情" placeholder="详细描述任务，不超过100字" maxlength="100" bind:change="update_remark"  type="textarea"/>
+              </i-panel>
+              <i-panel title=" ">
+                <i-input value="{{reserved_time}}" right title="保留时间" placeholder="任务在平台上的保留时间，单位：小时" maxlength="50" bind:change="update_reserved_time" type="number" />
+              </i-panel>
+              <i-panel title=" ">
+                <i-input value="{{ fee }}" type="number" right title="任务酬劳" placeholder="单位：元" maxlength="50" bind:change="update_fee" />
+              </i-panel>
+              <button  form-type="submit" class="submit_button">发布自由任务</button>
+            </i-col>
+          </i-row>
+        </view>
+      </i-col>
+    </i-row>
+</form>

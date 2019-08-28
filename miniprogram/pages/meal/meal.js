@@ -1,4 +1,4 @@
-// miniprogram/pages/customize/customize.js
+// miniprogram/pages/meal/meal.js
 const db = wx.cloud.database()
 const app = getApp()
 Page({
@@ -10,8 +10,8 @@ Page({
     phone: "",
     product: "",
     reach_address: "",
-    reserved_time:"",
     remark: "",
+    deliver_address: "",
     fee: '',
   },
 
@@ -26,6 +26,7 @@ Page({
       that.setData(
         {
           phone: res.data[0].phone,
+          deliver_address: res.data[0].address
         }
       )
     })
@@ -54,11 +55,6 @@ Page({
       phone: e.detail.detail.value
     })
   },
-  update_reserved_time: function (e) {
-    this.setData({
-      reserved_time: e.detail.detail.value
-    })
-  },
   update_reach_address: function (e) {
     this.setData({
       reach_address: e.detail.detail.value
@@ -67,6 +63,11 @@ Page({
   update_remark: function (e) {
     this.setData({
       remark: e.detail.detail.value
+    })
+  },
+  update_deliver_address: function (e) {
+    this.setData({
+      deliver_address: e.detail.detail.value
     })
   },
   update_fee: function (e) {
@@ -79,7 +80,7 @@ Page({
     if (this.data.company == "") {
       wx.showModal({
         title: '错误',
-        content: '请填写任务简介',
+        content: '请填写商品名称',
         showCancel: false,
       })
       return
@@ -87,7 +88,7 @@ Page({
     if (that.data.reach_address == "") {
       wx.showModal({
         title: '错误',
-        content: '请填写任务地点',
+        content: '请填写取件地址',
         showCancel: false,
       })
       return
@@ -100,18 +101,10 @@ Page({
       })
       return
     }
-    if (that.data.remark == "") {
+    if (that.data.deliver_address == "") {
       wx.showModal({
         title: '错误',
-        content: '请填写任务详情',
-        showCancel: false,
-      })
-      return
-    }
-    if (that.data.remark == "") {
-      wx.showModal({
-        title: '错误',
-        content: '请填写保留时间',
+        content: '请填写送货地址',
         showCancel: false,
       })
       return
@@ -119,7 +112,7 @@ Page({
     if (that.data.fee == "") {
       wx.showModal({
         title: '错误',
-        content: '请填写任务酬劳',
+        content: '请填写跑腿小费',
         showCancel: false,
       })
       return
@@ -142,14 +135,15 @@ Page({
         data: {
           product: that.data.product,
           reach_address: that.data.reach_address,
+          deliver_address: that.data.deliver_address,
           fee: that.data.fee,
           phone: that.data.phone,
           remarks: that.data.remark,
           createtime: db.serverDate(),
           reserved_time: db.serverDate({
-            offset: 60 * 60 * 1000*that.data.reserved_time,
+            offset: 60 * 60 * 1000,
           }),
-          type: 0,
+          type: 2,
           status: "0",
           complete: "0",
           form_id: e.detail.formId,
@@ -157,8 +151,8 @@ Page({
         success: function () {
           wx.hideLoading()
           wx.showModal({
-            title: '发布成功',
-            content: '您已成功发布自由任务，',
+            title: '下单成功',
+            content: '您已成功下单，打饭订单保留时间为一小时，您也可以手动取消订单',
             showCancel: false,
             success: function () {
               wx.switchTab({

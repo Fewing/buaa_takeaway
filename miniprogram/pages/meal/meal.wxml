@@ -1,0 +1,29 @@
+<!--miniprogram/pages/meal/meal.wxml-->
+<form bindsubmit="order_submit" report-submit="true">
+    <i-row>
+      <i-col span="24" i-class="col-class">
+        <view class="top_bg">
+          <i-row>
+            <i-col span="22" i-class="col-class" offset="1">
+              <view class="top"></view>
+              <i-icon type="shop_fill" size="32" color="#1c2438" />
+              <text style="color:#1c2438">打饭</text>
+              <i-panel style="padding=10rpx">
+                <i-input value="{{ product }}" title="商品名称" placeholder="想吃点啥？"bind:change="update_product" maxlength="50" />
+                <i-input value="{{ reach_address }}" type="text" title="打饭地址" placeholder="如合一楼三楼" maxlength="50" bind:change="update_reach_address" />
+                <i-input value="{{ phone }}" type="number" title="联系电话" placeholder="" maxlength="50" bind:change="update_phone" />
+                <i-input value="{{ remark }}" title="备注" placeholder="" maxlength="50" bind:change="update_remark" />
+              </i-panel>
+              <i-panel title="送货信息">
+                <i-input value="{{ deliver_address }}" title="送货地址" placeholder="" maxlength="50" bind:change="update_deliver_address" />
+              </i-panel>
+              <i-panel title=" ">
+                <i-input value="{{ fee }}" type="number" right title="跑腿小费" placeholder="单位：元" maxlength="50" bind:change="update_fee" />
+              </i-panel>
+              <button  form-type="submit" class="submit_button">下单</button>
+            </i-col>
+          </i-row>
+        </view>
+      </i-col>
+    </i-row>
+</form>
