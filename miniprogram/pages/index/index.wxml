@@ -4,5 +4,6 @@
     <i-button bind:click="to_order" type="primary" size="large">取快递</i-button>
     <i-button bind:click="to_customize" type="success">自由任务</i-button>
     <i-button bind:click="to_meal" type="warning">打饭</i-button>
+    <i-button bind:click="to_deliver" type="info">接单</i-button>
   </view>
 </view>

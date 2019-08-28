@@ -29,6 +29,11 @@ Page({
       url: '../meal/meal'
     })
   },
+  to_deliver: function () {
+    wx.navigateTo({
+      url: '../temp_deliver/temp_deliver'
+    })
+  },
   data: {
   },
   onLoad: function() {

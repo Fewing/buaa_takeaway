@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "i-card": "../../dist/card/index",
+    "i-input": "../../dist/input/index",
+    "i-panel": "../../dist/panel/index",
+    "i-button": "../../dist/button/index",
+    "i-row": "../../dist/row/index",
+    "i-col": "../../dist/col/index",
+    "i-icon": "../../dist/icon/index"
+  }
+}

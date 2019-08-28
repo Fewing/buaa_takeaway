@@ -1,0 +1,11 @@
+/* miniprogram/pages/temp_deliver/temp_deliver.wxss */
+
+page {
+  background: #f6f6f6;
+  display: block;
+}
+express_line
+{
+  background-color: #2d8cf0;
+  height: 40rpx;
+}

@@ -34,32 +34,35 @@ Page({
       title: '加载中',
     })
     var d = new Date();
-    var t = d.getTime();
-    t -= 3600000; //一个小时的毫秒数
-    var d_limit = new Date(t);
     db.collection('order').where(com.and([
       {
-        delivertime: com.gte(d_limit),
+        reserved_time: com.gte(d),
         status: "0",
       },
       {
-        _openid: com.neq(app.globalData.openid),
+       // _openid: com.neq(app.globalData.openid),
       }
-    ])).orderBy('delivertime', 'asc')
+    ])).orderBy('createtime', 'desc')
       .get()
       .then(e => {
+        var temp_years
+        var temp_months
+        var temp_days
         var temp_hours
         var temp_minutes
         for (var i = 0; i < e.data.length; i++) {
-          temp_hours = e.data[i].delivertime.getHours()
-          temp_minutes = e.data[i].delivertime.getMinutes()
+          temp_hours = e.data[i].createtime.getHours()
+          temp_minutes = e.data[i].createtime.getMinutes()
+          temp_years = e.data[i].createtime.getFullYear()
+          temp_months = e.data[i].createtime.getMonth()+1
+          temp_days= e.data[i].createtime.getDate()
           if (temp_hours < 10) {
             temp_hours = "0" + temp_hours
           }
           if (temp_minutes < 10) {
             temp_minutes = "0" + temp_minutes
           }
-          e.data[i].delivertime = temp_hours + ":" + temp_minutes;
+          e.data[i].createtime = temp_years+"/"+temp_months+"/"+temp_days+" "+temp_hours + ":" + temp_minutes;
         }
         this.setData({
           order_list: e.data

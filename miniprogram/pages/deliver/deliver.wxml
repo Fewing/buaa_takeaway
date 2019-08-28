@@ -17,15 +17,19 @@
         </view>
         <view class="weui-form-preview__item">
           <view class="weui-form-preview__label">送货地址</view>
-          <view class="weui-form-preview__value">{{item.address}}</view>
+          <view class="weui-form-preview__value">{{item.deliver_address}}</view>
         </view>
-        <view class="weui-form-preview__item">
-          <view class="weui-form-preview__label">送达时间</view>
-          <view class="weui-form-preview__value" style='color:#09BB07'>{{item.delivertime}}</view>
+        <view class="weui-form-preview__item"> 
+          <view class="weui-form-preview__label">创建时间</view> 
+          <view class="weui-form-preview__value" style='color:#09BB07'>{{item.createtime}}</view> 
         </view>
         <view class="weui-form-preview__item">
           <view class="weui-form-preview__label">备注</view>
           <view class="weui-form-preview__value">{{item.remarks}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">类别</view>
+          <view class="weui-form-preview__value">{{item.type}}</view>
         </view>
       </view>
       <view class="weui-form-preview__ft">
