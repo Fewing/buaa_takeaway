@@ -29,18 +29,18 @@ exports.main = async(event, context) => {
   var temp_year
   var temp_month
   var temp_date
-  temp_year = e.data.delivertime.getFullYear()
-  temp_month = e.data.delivertime.getMonth() + 1
-  temp_date = e.data.delivertime.getDate()
-  temp_hours = e.data.delivertime.getHours()
-  temp_minutes = e.data.delivertime.getMinutes()
+  temp_year = e.data.createtime.getFullYear()
+  temp_month = e.data.createtime.getMonth() + 1
+  temp_date = e.data.createtime.getDate()
+  temp_hours = e.data.createtime.getHours()
+  temp_minutes = e.data.createtime.getMinutes()
   if (temp_hours < 10) {
     temp_hours = "0" + temp_hours
   }
   if (temp_minutes < 10) {
     temp_minutes = "0" + temp_minutes
   }
-  e.data.delivertime = temp_year + "-" + temp_month + "-" + temp_date + " " + temp_hours + ":" + temp_minutes;
+  e.data.createtime = temp_year + "-" + temp_month + "-" + temp_date + " " + temp_hours + ":" + temp_minutes;
   var temp = {
     "touser": e.data._openid,
     "template_id": "H3crBQ-B9CPgAe9MEibk56yZUr0W-x7nuTQ8IqcSbts",
@@ -51,10 +51,10 @@ exports.main = async(event, context) => {
         "value": e.data.product
       },
       "keyword2": {
-        "value": e.data.address
+        "value": e.data.deliver_address
       },
       "keyword3": {
-        "value": e.data.delivertime
+        "value": e.data.createtime
       },
     },
   }

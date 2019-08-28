@@ -18,7 +18,7 @@
       </view>
     </view>
     <view class="weui-cell weui-cell_input weui-cell_vcode"></view>
-    <view class="weui-cells__tips">以上信息仅用于认证，请务必如实填写</view>
+    <view class="weui-cells__tips">以上信息用于认证，请如实填写</view>
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__hd">
         <view class="weui-label">校区</view>

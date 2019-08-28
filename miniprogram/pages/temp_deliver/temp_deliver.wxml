@@ -1,51 +1,151 @@
 <!--miniprogram/pages/temp_deliver/temp_deliver.wxml-->
-<i-card title="取快递" extra="8¥" thumb="../../temp_deliver/express.svg">
-  <view slot="content">
-    <i-row>
-      <i-col span="8">
-        <view class="express_line">示例标题</view>
-      </i-col>
-      <i-col span="8" offset="8">
-        <view class="express_line">示例内容</view>
-      </i-col>
-    </i-row>
-    <i-row>
-      <i-col span="24">示例</i-col>
-    </i-row>
+<view wx:if="{{order_list.length == 0}}">
+  当前暂无订单可接
+</view>
+<view wx:for="{{order_list}}">
+  <view wx:if="{{item.type==1}}">
+    <i-card title="取快递" extra="¥8" thumb="../../temp_deliver/express.svg">
+      <view slot="content" class="express_content">
+        <i-row class="">
+          <i-col span="8">
+            <view class="list_cell">快递公司</view>
+          </i-col>
+          <i-col span="16" offset="0">
+            <view class="list_cell">{{item.product}}</view>
+          </i-col>
+        </i-row>
+        <i-row>
+          <i-col span="8">
+            <view class="list_cell">取件地址</view>
+          </i-col>
+          <i-col span="16" offset="0">
+            <view class="list_cell">{{item.reach_address}}</view>
+          </i-col>
+        </i-row>
+        <i-row>
+          <i-col span="8">
+            <view class="list_cell">送货地址</view>
+          </i-col>
+          <i-col span="16" offset="0">
+            <view class="list_cell">{{item.deliver_address}}</view>
+          </i-col>
+        </i-row>
+      </view>
+      <view slot="footer">
+        <i-row>
+          <i-col span="16">
+            <i-row>
+              <i-col span="6">
+                <view class=" remark_content">备注</view>
+              </i-col>
+              <i-col span="18">
+                <view class="">{{item.remarks}}</view>
+              </i-col>
+            </i-row>
+            <i-col span="24">
+              <view class="time">{{item.createtime}}</view>
+            </i-col>
+          </i-col>
+          <i-col span="8">
+           <i-button bindtap="submmit" type="info" id="{{item._id}}">接单</i-button>
+          </i-col>
+        </i-row>
+      </view>
+    </i-card>
+    <view style="height:10rpx"></view>
   </view>
-  <view slot="footer">尾部内容</view>
-</i-card>
-<view style="height:10rpx"></view>
-<i-card title="打饭" extra="8¥" thumb="../../temp_deliver/dinning.svg">
-  <view slot="content">
-    <i-row>
-      <i-col span="8">
-        <view class="express_line">示例标题</view>
-      </i-col>
-      <i-col span="8" offset="8">
-        <view class="express_line">示例内容</view>
-      </i-col>
-    </i-row>
-    <i-row>
-      <i-col span="24">示例</i-col>
-    </i-row>
+  <view wx:if="{{item.type==2}}">
+    <i-card title="打饭" extra="¥8" thumb="../../temp_deliver/dinning.svg">
+      <view slot="content" class="dinning_content">
+        <i-row class="">
+          <i-col span="8">
+            <view class="list_cell">商品名称</view>
+          </i-col>
+          <i-col span="16" offset="0">
+            <view class="list_cell">西红柿炒鸡蛋</view>
+          </i-col>
+        </i-row>
+        <i-row>
+          <i-col span="8">
+            <view class="list_cell">打饭地址</view>
+          </i-col>
+          <i-col span="16" offset="0">
+            <view class="list_cell">合一楼三楼</view>
+          </i-col>
+        </i-row>
+        <i-row>
+          <i-col span="8">
+            <view class="list_cell">送货地址</view>
+          </i-col>
+          <i-col span="16" offset="0">
+            <view class="list_cell">15楼-408</view>
+          </i-col>
+        </i-row>
+      </view>
+      <view slot="footer">
+        <i-row>
+          <i-col span="16">
+            <i-row>
+              <i-col span="6">
+                <view class=" remark_content">备注</view>
+              </i-col>
+              <i-col span="18">
+                <view class="">无</view>
+              </i-col>
+            </i-row>
+            <i-col span="24">
+              <view class="time">2019/8/28 20:15</view>
+            </i-col>
+          </i-col>
+          <i-col span="8">
+            <i-button bind:click="submmit" type="info">接单</i-button>
+          </i-col>
+        </i-row>
+      </view>
+    </i-card>
+    <view style="height:10rpx"></view>
   </view>
-  <view slot="footer">尾部内容</view>
-</i-card>
-<view style="height:10rpx"></view>
-<i-card title="自由任务" extra="8¥" thumb="../../temp_deliver/customize.svg">
-  <view slot="content">
-    <i-row>
-      <i-col span="8">
-        <view class="express_line">示例标题</view>
-      </i-col>
-      <i-col span="8" offset="8">
-        <view class="express_line">示例内容</view>
-      </i-col>
-    </i-row>
-    <i-row>
-      <i-col span="24">示例</i-col>
-    </i-row>
+  <view wx:if="{{item.type==0}}">
+    <i-card title="自由任务" extra="¥8" thumb="../../temp_deliver/customize.svg">
+      <view slot="content" class="customize_content">
+        <i-row class="">
+          <i-col span="8">
+            <view class="list_cell">任务简介</view>
+          </i-col>
+          <i-col span="16" offset="0">
+            <view class="list_cell">代跑步</view>
+          </i-col>
+        </i-row>
+        <i-row>
+          <i-col span="8">
+            <view class="list_cell">任务地点</view>
+          </i-col>
+          <i-col span="16" offset="0">
+            <view class="list_cell">操场</view>
+          </i-col>
+        </i-row>
+      </view>
+      <view slot="footer">
+        <i-row>
+          <i-col span="16">
+            <i-row>
+              <i-col span="6">
+                <view class=" remark_content">详情</view>
+              </i-col>
+              <i-col span="18">
+                <view class="">操场带keep跑步10km</view>
+              </i-col>
+            </i-row>
+            <i-col span="24">
+              <view class="time">2019/8/28 20:15</view>
+            </i-col>
+          </i-col>
+          <i-col span="8">
+            <i-button bind:click="submmit" type="info">接单</i-button>
+          </i-col>
+        </i-row>
+      </view>
+    </i-card>
+    <view style="height:10rpx"></view>
   </view>
-  <view slot="footer">尾部内容</view>
-</i-card>
+</view>
