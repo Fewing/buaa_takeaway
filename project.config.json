@@ -8,6 +8,7 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"nodeModules": true,
 		"autoAudits": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
@@ -17,7 +18,7 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"nodeModules": true
+		"enhance": true
 	},
 	"appid": "wx0a053365786e17f8",
 	"projectname": "%E5%8C%97%E8%88%AA%E6%89%93%E9%A5%AD%E9%82%A6",

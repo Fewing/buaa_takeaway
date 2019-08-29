@@ -95,9 +95,6 @@ Page({
       confirmColor: "#e64340",
       success: res => {
         if (res.confirm) {
-          this.setData({
-            test: 1,
-          })
           wx.showLoading({
             title: '请稍后',
             mask: 'true',

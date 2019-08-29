@@ -26,7 +26,8 @@ Page({
           status: "0",
         },
         {
-          // _openid: com.neq(app.globalData.openid),
+          //_openid: com.neq(app.globalData.openid),
+          campus:com.eq(app.globalData.campus),
         }
       ])).orderBy('createtime', 'desc')
       .get()
@@ -150,7 +151,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.onLoad()
+    wx.stopPullDownRefresh()
   },
 
   /**

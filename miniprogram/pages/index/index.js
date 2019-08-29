@@ -14,7 +14,7 @@ Page({
       }
     });
   },
-  to_order: function(){
+  to_express: function(){
     wx.navigateTo({
       url: '../express/express'
     })
@@ -32,6 +32,12 @@ Page({
   to_deliver: function () {
     wx.navigateTo({
       url: '../temp_deliver/temp_deliver'
+    })
+  },
+  to_order_list: function()
+  {
+    wx.navigateTo({
+      url: '../order_list/order_list'
     })
   },
   data: {

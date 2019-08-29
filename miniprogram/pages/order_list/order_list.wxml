@@ -1,0 +1,339 @@
+<wux-tabs wux-class="bordered" controlled current="{{ key }}" theme="calm" bindchange="onTabsChange">
+  <block wx:for="{{ tabs }}" wx:key="key">
+    <wux-tab key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
+  </block>
+</wux-tabs>
+<swiper current="{{ index }}" bindchange="onSwiperChange" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+  <swiper-item>
+    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+      <view>
+        <view style="height:30rpx"></view>
+        <view wx:for="{{order_list}}">
+          <view wx:if="{{item.type==1}}">
+            <i-card title="取快递" extra="{{item.status}} ¥{{item.fee}}" thumb="../../temp_deliver/express.svg">
+              <view slot="content" class="express_content">
+                <i-row class="">
+                  <i-col span="8">
+                    <view class="list_cell">快递公司</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.product}}</view>
+                  </i-col>
+                </i-row>
+                <i-row>
+                  <i-col span="8">
+                    <view class="list_cell">取件地址</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.reach_address}}</view>
+                  </i-col>
+                </i-row>
+                <i-row>
+                  <i-col span="8">
+                    <view class="list_cell">送货地址</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.deliver_address}}</view>
+                  </i-col>
+                </i-row>
+              </view>
+              <view slot="footer">
+                <i-row>
+                  <i-col span="16">
+                    <i-row>
+                      <i-col span="6">
+                        <view class=" remark_content">备注</view>
+                      </i-col>
+                      <i-col span="18">
+                        <view class="">{{item.remarks}}</view>
+                      </i-col>
+                    </i-row>
+                    <i-col span="24">
+                      <view class="time">创建时间：{{item.createtime}}</view>
+                    </i-col>
+                  </i-col>
+                  <i-col span="8">
+                    <i-button bind:click="{{item.button_change}}" type="{{item.button_type}}" disabled="{{item.button_dis}}" id="{{item._id}}">{{item.button_text}}</i-button>
+                  </i-col>
+                </i-row>
+              </view>
+            </i-card>
+            <view style="height:10rpx"></view>
+          </view>
+          <view wx:if="{{item.type==2}}">
+            <i-card title="打饭" extra="{{item.status}} ¥{{item.fee}}" thumb="../../temp_deliver/dinning.svg">
+              <view slot="content" class="dinning_content">
+                <i-row class="">
+                  <i-col span="8">
+                    <view class="list_cell">商品名称</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.product}}</view>
+                  </i-col>
+                </i-row>
+                <i-row>
+                  <i-col span="8">
+                    <view class="list_cell">打饭地址</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.reach_address}}</view>
+                  </i-col>
+                </i-row>
+                <i-row>
+                  <i-col span="8">
+                    <view class="list_cell">送货地址</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.deliver_address}}</view>
+                  </i-col>
+                </i-row>
+              </view>
+              <view slot="footer">
+                <i-row>
+                  <i-col span="16">
+                    <i-row>
+                      <i-col span="6">
+                        <view class=" remark_content">备注</view>
+                      </i-col>
+                      <i-col span="18">
+                        <view class="">{{item.remarks}}</view>
+                      </i-col>
+                    </i-row>
+                    <i-col span="24">
+                      <view class="time">创建时间：{{item.createtime}}</view>
+                    </i-col>
+                  </i-col>
+                  <i-col span="8">
+                    <i-button bind:click="{{item.button_change}}" type="{{item.button_type}}" disabled="{{item.button_dis}}" id="{{item._id}}">{{item.button_text}}</i-button>
+                  </i-col>
+                </i-row>
+              </view>
+            </i-card>
+            <view style="height:10rpx"></view>
+          </view>
+          <view wx:if="{{item.type==0}}">
+            <i-card title="自由任务" extra="{{item.status}} ¥{{item.fee}}" thumb="../../temp_deliver/customize.svg">
+              <view slot="content" class="customize_content">
+                <i-row class="">
+                  <i-col span="8">
+                    <view class="list_cell">任务简介</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.product}}</view>
+                  </i-col>
+                </i-row>
+                <i-row>
+                  <i-col span="8">
+                    <view class="list_cell">任务地点</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.reach_address}}</view>
+                  </i-col>
+                </i-row>
+              </view>
+              <view slot="footer">
+                <i-row>
+                  <i-col span="16">
+                    <i-row>
+                      <i-col span="6">
+                        <view class=" remark_content">详情</view>
+                      </i-col>
+                      <i-col span="18">
+                        <view class="">{{item.remarks}}</view>
+                      </i-col>
+                    </i-row>
+                    <i-col span="24">
+                      <view class="time">创建时间：{{item.createtime}}</view>
+                    </i-col>
+                  </i-col>
+                  <i-col span="8">
+                    <i-button bind:click="{{item.button_change}}" type="{{item.button_type}}" disabled="{{item.button_dis}}" id="{{item._id}}">{{item.button_text}}</i-button>
+                  </i-col>
+                </i-row>
+              </view>
+            </i-card>
+            <view style="height:10rpx"></view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+  <swiper-item>
+    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscrolltolower="scrollbot">
+      <view>
+        <view style="height:30rpx"></view>
+        <view wx:for="{{deliver_list}}">
+          <view wx:if="{{item.type==1}}">
+            <i-card title="取快递" extra="{{item.status}} ¥{{item.fee}}" thumb="../../temp_deliver/express.svg">
+              <view slot="content" class="express_content">
+                <i-row class="">
+                  <i-col span="8">
+                    <view class="list_cell">快递公司</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.product}}</view>
+                  </i-col>
+                </i-row>
+                <i-row>
+                  <i-col span="8">
+                    <view class="list_cell">取件地址</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.reach_address}}</view>
+                  </i-col>
+                </i-row>
+                <i-row>
+                  <i-col span="8">
+                    <view class="list_cell">送货地址</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.deliver_address}}</view>
+                  </i-col>
+                </i-row>
+                <i-row class="">
+                  <i-col span="8">
+                    <view class="list_cell">联系电话</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.phone}}</view>
+                  </i-col>
+                </i-row>
+              </view>
+              <view slot="footer">
+                <i-row>
+                  <i-col span="16">
+                    <i-row>
+                      <i-col span="6">
+                        <view class=" remark_content">备注</view>
+                      </i-col>
+                      <i-col span="18">
+                        <view class="">{{item.remarks}}</view>
+                      </i-col>
+                    </i-row>
+                    <i-col span="24">
+                      <view class="time">创建时间：{{item.createtime}}</view>
+                    </i-col>
+                  </i-col>
+                  <i-col span="8">
+                    <i-button bind:click="{{item.button_change}}" type="{{item.button_type}}" disabled="{{item.button_dis}}" id="{{item.phone}}">{{item.button_text}}</i-button>
+                  </i-col>
+                </i-row>
+              </view>
+            </i-card>
+            <view style="height:10rpx"></view>
+          </view>
+          <view wx:if="{{item.type==2}}">
+            <i-card title="打饭" extra="{{item.status}} ¥{{item.fee}}" thumb="../../temp_deliver/dinning.svg">
+              <view slot="content" class="dinning_content">
+                <i-row class="">
+                  <i-col span="8">
+                    <view class="list_cell">商品名称</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.product}}</view>
+                  </i-col>
+                </i-row>
+                <i-row>
+                  <i-col span="8">
+                    <view class="list_cell">打饭地址</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.reach_address}}</view>
+                  </i-col>
+                </i-row>
+                <i-row>
+                  <i-col span="8">
+                    <view class="list_cell">送货地址</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.deliver_address}}</view>
+                  </i-col>
+                </i-row>
+                <i-row class="">
+                  <i-col span="8">
+                    <view class="list_cell">联系电话</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.phone}}</view>
+                  </i-col>
+                </i-row>
+              </view>
+              <view slot="footer">
+                <i-row>
+                  <i-col span="16">
+                    <i-row>
+                      <i-col span="6">
+                        <view class=" remark_content">备注</view>
+                      </i-col>
+                      <i-col span="18">
+                        <view class="">{{item.remarks}}</view>
+                      </i-col>
+                    </i-row>
+                    <i-col span="24">
+                      <view class="time">创建时间：{{item.createtime}}</view>
+                    </i-col>
+                  </i-col>
+                  <i-col span="8">
+                    <i-button bind:click="{{item.button_change}}" type="{{item.button_type}}" disabled="{{item.button_dis}}" id="{{item.phone}}">{{item.button_text}}</i-button>
+                  </i-col>
+                </i-row>
+              </view>
+            </i-card>
+            <view style="height:10rpx"></view>
+          </view>
+          <view wx:if="{{item.type==0}}">
+            <i-card title="自由任务" extra="{{item.status}} ¥{{item.fee}}" thumb="../../temp_deliver/customize.svg">
+              <view slot="content" class="customize_content">
+                <i-row class="">
+                  <i-col span="8">
+                    <view class="list_cell">任务简介</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.product}}</view>
+                  </i-col>
+                </i-row>
+                <i-row>
+                  <i-col span="8">
+                    <view class="list_cell">任务地点</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.reach_address}}</view>
+                  </i-col>
+                </i-row>
+                <i-row class="">
+                  <i-col span="8">
+                    <view class="list_cell">联系电话</view>
+                  </i-col>
+                  <i-col span="16" offset="0">
+                    <view class="list_cell">{{item.phone}}</view>
+                  </i-col>
+                </i-row>
+              </view>
+              <view slot="footer">
+                <i-row>
+                  <i-col span="16">
+                    <i-row>
+                      <i-col span="6">
+                        <view class=" remark_content">详情</view>
+                      </i-col>
+                      <i-col span="18">
+                        <view class="">{{item.remarks}}</view>
+                      </i-col>
+                    </i-row>
+                    <i-col span="24">
+                      <view class="time">创建时间：{{item.createtime}}</view>
+                    </i-col>
+                  </i-col>
+                  <i-col span="8">
+                    <i-button bind:click="{{item.button_change}}" type="{{item.button_type}}" disabled="{{item.button_dis}}" id="{{item.phone}}">{{item.button_text}}</i-button>
+                  </i-col>
+                </i-row>
+              </view>
+            </i-card>
+            <view style="height:10rpx"></view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+</swiper>

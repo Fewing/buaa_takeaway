@@ -1,0 +1,18 @@
+{
+  "usingComponents": {
+    "i-card": "../../dist/card/index",
+    "i-input": "../../dist/input/index",
+    "i-panel": "../../dist/panel/index",
+    "i-button": "../../dist/button/index",
+    "i-row": "../../dist/row/index",
+    "i-col": "../../dist/col/index",
+    "i-icon": "../../dist/icon/index",
+    "i-cell-group": "../../dist/cell-group/index",
+    "i-cell": "../../dist/cell/index",
+    "wux-tabs": "../../wu_dist/tabs/index",
+    "wux-tab": "../../wu_dist/tab/index",
+    "wux-badge": "../../wu_dist/badge/index"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#5cadff"
+}

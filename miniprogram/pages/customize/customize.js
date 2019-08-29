@@ -153,6 +153,7 @@ Page({
           status: "0",
           complete: "0",
           form_id: e.detail.formId,
+          campus: app.globalData.campus,
         },
         success: function () {
           wx.hideLoading()

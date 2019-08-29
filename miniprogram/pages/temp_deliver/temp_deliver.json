@@ -8,6 +8,10 @@
     "i-col": "../../dist/col/index",
     "i-icon": "../../dist/icon/index",
     "i-cell-group": "../../dist/cell-group/index",
-    "i-cell": "../../dist/cell/index"
-  }
+    "i-cell": "../../dist/cell/index",
+    "i-tabs": "../../dist/tabs/index",
+    "i-tab": "../../dist/tab/index"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#5cadff"
 }
