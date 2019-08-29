@@ -1,108 +1,55 @@
 <!--miniprogram/pages/my_info/my_info.wxml-->
-<view class="touimage">
-  <view class="head">
-    <open-data type="userAvatarUrl"></open-data>
-  </view>
-  <view class='text'>
-    <open-data type="userNickName"></open-data>
-  </view>
+<view class="head">
+  <open-data type="userAvatarUrl" id="userinfo"></open-data>
+  <open-data type="userNickName" id="userNickName"></open-data>
 </view>
-<view class="page__bd">
-  <view class="weui-tab">
-    <view class="weui-navbar">
-      <block wx:for="{{tabs}}" wx:key="*this">
-        <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
-          <view class="weui-navbar__title">{{item}}</view>
-        </view>
-      </block>
-      <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
-    </view>
-    <view class="weui-tab__panel">
-      <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-        <view class="weui-cell weui-cell_input">
-          <view class="weui-cell__hd">
-            <view>仅显示最近订单和未完成订单</view>
-          </view>
-        </view>
-        <view wx:for="{{my_order}}" class="page__bd">
-          <view class="weui-form-preview">
-            <view class="weui-form-preview__hd">
-              <view class="weui-form-preview__label">订单状态</view>
-              <view class="weui-form-preview__value_in-hd">{{item.status}}</view>
-            </view>
-            <view class="weui-form-preview__bd">
-              <view class="weui-form-preview__item">
-                <view class="weui-form-preview__label">商品名称</view>
-                <view class="weui-form-preview__value">{{item.product}}</view>
-              </view>
-              <view class="weui-form-preview__item">
-                <view class="weui-form-preview__label">送达时间</view>
-                <view class="weui-form-preview__value" style='color:#09BB07'>{{item.delivertime}}</view>
-              </view>
-              <view class="weui-form-preview__item">
-                <view class="weui-form-preview__label">送货地址</view>
-                <view class="weui-form-preview__value">{{item.address}}</view>
-              </view>
-              <view class="weui-form-preview__item">
-                <view class="weui-form-preview__label">跑腿小费</view>
-                <view class="weui-form-preview__value">¥{{item.fee}}</view>
-              </view>
-              <view class="weui-form-preview__item">
-                <view class="weui-form-preview__label">备注</view>
-                <view class="weui-form-preview__value">{{item.remarks}}</view>
-              </view>
-            </view>
-            <view class="weui-form-preview__ft">
-              <button id="{{item._id}}" class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" bindtap='cancel' type="{{item.status=='未接单' ? 'warn' : 'default'}}" disabled="{{item.status=='未接单' ? false : true}}">取消订单</button>
-              <button id="{{item._id}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='confirm' type="{{item.status=='已接单，递送中' ? 'primary' : 'default'}}" disabled="{{item.status=='已取消'||item.status=='已完成'||item.status=='未接单' ? true : false}}">确认收货</button>
-            </view>
-          </view>
-        </view>
-      </view>
-      <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
-        <view class="weui-cell weui-cell_input">
-          <view class="weui-cell__hd">
-            <view>仅显示最近一天接单</view>
-          </view>
-        </view>
-        <view wx:for="{{my_deliver}}" class="page__bd">
-          <view class="weui-form-preview">
-            <view class="weui-form-preview__hd">
-              <view class="weui-form-preview__label">送达时间</view>
-              <view class="weui-form-preview__value_in-hd">{{item.delivertime}}</view>
-            </view>
-            <view class="weui-form-preview__bd">
-              <view class="weui-form-preview__item">
-                <view class="weui-form-preview__label">订单状态</view>
-                <view class="weui-form-preview__value" class="{{item.complete=='0'?'red':'green'}} deliver_status">{{item.status}}</view>
-              </view>
-              <view class="weui-form-preview__item">
-                <view class="weui-form-preview__label">送货地址</view>
-                <view class="weui-form-preview__value">{{item.address}}</view>
-              </view>
-              <view class="weui-form-preview__item">
-                <view class="weui-form-preview__label">商品名称</view>
-                <view class="weui-form-preview__value">{{item.product}}</view>
-              </view>
-              <view class="weui-form-preview__item">
-                <view class="weui-form-preview__label">联系方式</view>
-                <view class="weui-form-preview__value">{{item.phone}}</view>
-              </view>
-              <view class="weui-form-preview__item">
-                <view class="weui-form-preview__label">跑腿小费</view>
-                <view class="weui-form-preview__value">¥{{item.fee}}</view>
-              </view>
-              <view class="weui-form-preview__item">
-                <view class="weui-form-preview__label">备注</view>
-                <view class="weui-form-preview__value">{{item.remarks}}</view>
-              </view>
-            </view>
-          </view>
-        </view>
-      </view>
-      <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
-          建设中
-        </view>
-    </view>
+<view style="height:30rpx"></view>
+<i-card title="个人信息" extra="" class="" thumb="../../my_info/info.svg">
+  <view slot="content" class="express_content">
+    <i-row class="">
+      <i-col span="8">
+        <view class="list_cell">
+          <wux-icon type="md-school" size="20" color="#80848f" style="padding-right:15rpx" />当前校区</view>
+      </i-col>
+      <i-col span="16" offset="0">
+        <view class="list_cell">{{campus[index]}}</view>
+      </i-col>
+    </i-row>
+    <i-row>
+      <i-col span="8">
+        <view class="list_cell">
+          <wux-icon type="md-call" size="20" color="#80848f" style="padding-right:15rpx" />联系电话</view>
+      </i-col>
+      <i-col span="16" offset="0">
+        <view class="list_cell">{{phone}}</view>
+      </i-col>
+    </i-row>
+    <i-row>
+      <i-col span="8">
+        <view class="list_cell">
+          <wux-icon type="md-pin" size="20" color="#80848f" style="padding-right:15rpx" />送货地址</view>
+      </i-col>
+      <i-col span="16" offset="0">
+        <view class="list_cell">{{deliver_address}}</view>
+      </i-col>
+    </i-row>
   </view>
-</view>
+  <view slot="footer">
+    <i-button bindtap="to_modify" type="info">修改</i-button>
+  </view>
+</i-card>
+<view style="height:30rpx"></view>
+<i-card title="足迹">
+  <view slot="content">
+    <i-row>
+      <i-col span="24">
+        <text class="card_text">你在北航校园邦</text>
+      </i-col>
+    </i-row>
+    <i-row>
+      <i-col span="24">
+        <text class="card_text">已完成</text><text class="" style="color:#2d8cf0 ;font-size:30px">{{count}}</text><text class="card_text">次订单！</text>
+      </i-col>
+    </i-row>
+  </view>
+</i-card>

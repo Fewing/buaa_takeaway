@@ -75,7 +75,6 @@ customize_content
 {
   font-size: 16px;
   padding-bottom: 5px;
-  
 }
 .remark_content
 {

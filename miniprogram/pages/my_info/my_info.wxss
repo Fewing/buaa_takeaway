@@ -1,56 +1,41 @@
 /* miniprogram/pages/my_info/my_info.wxss */
 @import '../../style/weui.wxss';
-page 
-{
+
+page {
   background: #f6f6f6;
   display: block;
 }
-.touimage{
-  margin: 0rpx;
-  display: flex;
-  vertical-align: middle;
-  background-color: rgba(0, 183, 255, 0.349);
-  height: 240rpx;
-}
-.head{
-  justify-content: center;
-  overflow: hidden;
-  width: 161rpx;
-  height: 161rpx;
-  border-radius: 50%;
-  margin:20rpx;
-}
-.text{
-  padding-top: 70rpx;
-  padding-left: 15rpx;
-}
-#bottom_nav
-{
-  height: 140rpx;
-  width: 750rpx;
-  display: flex;
-  flex-direction: row;
-  position:fixed;
-  bottom:0;
-}
-#bottom_nav button
-{
-  height: 100rpx;
-  width: 250rpx;
-  margin-top: 25rpx;
-  font-size: larger;
-  background-color: rgba(82, 219, 40, 0.123);
 
+.list_cell {
+  font-size: 16px;
+  padding-bottom: 5px;
+  display: flex;
 }
-.deliver_status
-{
-  font-size: 40rpx;
+
+#userinfo {
+  width: 185rpx;
+  height: 185rpx;
+  border-radius: 50%;
+  display: flex;
+  overflow: hidden;
+  text-align: center;
 }
-.red
-{
-  color:#e64340;
+
+#userNickName {
+  text-align: center;
 }
-.green
+
+.head {
+  padding-top: 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 50rpx;
+  background: #5cadff;
+}
+.card_text
 {
-  color:#09bb07;
+  font-size: 20px;
 }

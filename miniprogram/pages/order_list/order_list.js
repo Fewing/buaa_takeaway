@@ -57,12 +57,104 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    
+  },
+  cancel:function(event){
+    const that = this
+    var id = event.target.id
+    wx.showModal({
+      title: '确认',
+      content: '确定要取消订单吗？',
+      confirmColor: "#ed3f14",
+      success: res => {
+        if (res.confirm) {
+          wx.showLoading({
+            title: '请稍后',
+            mask: 'true',
+          })
+          db.collection('order').doc(id)
+            .update({
+              data: {
+                status: "-1",
+              },
+              success: res => {
+                wx.hideLoading()
+                wx.showToast({
+                  title: '订单取消成功',
+                  icon: 'success',
+                  duration: 1000,
+                  complete: res => {
+                    setTimeout(function () { that.onShow(); }, 1000)
+                  }
+                })
+              }
+            })
+        } else if (!res.confirm) {
+          return
+        }
+      }
+    })
+  },
+  confirm: function (event) {
+    var id = event.target.id
+    var that = this
+    wx.showModal({
+      title: '确认',
+      content: '确认收到货了吗？',
+      success: res => {
+        if (res.confirm) {
+          wx.showLoading({
+            title: '请稍后',
+            mask: 'true',
+          })
+          db.collection('order').doc(id)
+            .update({
+              data: {
+                complete: "1",
+              },
+              success: res => {
+                wx.hideLoading()
+                wx.showToast({
+                  title: '确认收货成功',
+                  icon: 'success',
+                  duration: 1000,
+                  mask: true,
+                  complete: res => {
+                    setTimeout(function () { that.onShow(); }, 1000)
+                  }
+                })
+              }
+            }, )
+        } else if (!res.confirm) {
+          return
+        }
+      }
+    })
+  },
+  call:function(event)
+  {
+    var phone = event.target.id
+    wx.makePhoneCall({
+      phoneNumber: phone
+    })
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
     wx.showLoading({
       title: '加载中',
     })
     var that = this
     wx.getSystemInfo({
-      success: function(res) {
+      success: function (res) {
         that.setData({
           clientHeight: res.windowHeight
         });
@@ -71,8 +163,8 @@ Page({
     var d = new Date();
     //开始读取订单页信息
     db.collection('order').where({
-        _openid: app.globalData.openid
-      }).orderBy('createtime', 'desc')
+      _openid: app.globalData.openid
+    }).orderBy('createtime', 'desc')
       .get()
       .then(e => {
         var temp_years
@@ -133,8 +225,8 @@ Page({
           order_list: e.data
         })//开始读取接单页信息
         db.collection('order').where({
-            status: app.globalData.openid
-          }).orderBy('createtime', 'desc')
+          status: app.globalData.openid
+        }).orderBy('createtime', 'desc')
           .get()
           .then(e => {
             var temp_years
@@ -143,16 +235,14 @@ Page({
             var temp_hours
             var temp_minutes
             for (var i = 0; i < e.data.length; i++) {
-              if (e.data[i].complete == "0")
-              {
+              if (e.data[i].complete == "0") {
                 e.data[i].status = "已接单"
                 e.data[i].button_type = "info"
                 e.data[i].button_text = "拨打电话"
                 e.data[i].button_dis = false
                 e.data[i].button_change = "call"
               }
-              else
-              {
+              else {
                 e.data[i].status = "已完成"
                 e.data[i].button_type = "info"
                 e.data[i].button_text = "已完成"
@@ -179,98 +269,6 @@ Page({
         wx.hideLoading()
       })
   },
-  cancel:function(event){
-    const that = this
-    var id = event.target.id
-    wx.showModal({
-      title: '确认',
-      content: '确定要取消订单吗？',
-      confirmColor: "#ed3f14",
-      success: res => {
-        if (res.confirm) {
-          wx.showLoading({
-            title: '请稍后',
-            mask: 'true',
-          })
-          db.collection('order').doc(id)
-            .update({
-              data: {
-                status: "-1",
-              },
-              success: res => {
-                wx.hideLoading()
-                wx.showToast({
-                  title: '订单取消成功',
-                  icon: 'success',
-                  duration: 2000,
-                  complete: res => {
-                    that.onLoad()
-                  }
-                })
-              }
-            })
-        } else if (!res.confirm) {
-          return
-        }
-      }
-    })
-  },
-  confirm: function (event) {
-    var id = event.target.id
-    var that = this
-    wx.showModal({
-      title: '确认',
-      content: '确认收到货了吗？',
-      success: res => {
-        if (res.confirm) {
-          wx.showLoading({
-            title: '请稍后',
-            mask: 'true',
-          })
-          db.collection('order').doc(id)
-            .update({
-              data: {
-                complete: "1",
-              },
-              success: res => {
-                wx.hideLoading()
-                wx.showToast({
-                  title: '确认收货成功',
-                  icon: 'success',
-                  duration: 1000,
-                  mask: true,
-                  complete: res => {
-                    setTimeout(function () { that.onLoad(); }, 1000)
-                  }
-                })
-              }
-            }, )
-        } else if (!res.confirm) {
-          return
-        }
-      }
-    })
-  },
-  call:function(event)
-  {
-    var phone = event.target.id
-    wx.makePhoneCall({
-      phoneNumber: phone
-    })
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -290,7 +288,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    this.onLoad()
+    this.onShow()
     wx.stopPullDownRefresh()
   },
 
