@@ -60,7 +60,11 @@ Page({
       })
     })
   },
-
+  to_modify_info: function () {
+    wx.navigateTo({
+      url: '../modify_info/modify_info'
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

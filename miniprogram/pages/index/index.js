@@ -40,7 +40,34 @@ Page({
       url: '../order_list/order_list'
     })
   },
+  to_test: function () {
+    wx.navigateTo({
+      url: '../regist/regist'
+    })
+  },
+  onClick(e) {
+    console.log('onClick', e.detail)
+    if (e.detail.index === 1) {
+      wx.navigateToMiniProgram({
+        appId: 'wx18a2ac992306a5a4',
+        path: 'pages/apps/largess/detail?id=ohK5VPvCJE4%3D',
+      })
+    }
+  },
   data: {
+    campus: ["学院路校区","沙河校区"],
+    index: "",
+    buttons: [
+    {
+      openType: 'share',
+      label: 'Share',
+      icon: "../../index/share.svg"
+    },
+    {
+      icon: "../../index/appreciate.svg",
+      label: 'appreciate',
+    },
+    ]
   },
   onLoad: function() {
     wx.showLoading({
@@ -67,18 +94,22 @@ Page({
    */
   onShow: function () {
     var now = new Date()
+    var that =this
     db.collection('user_info').where({
       _openid: app.globalData.openid
     }).get().then(res => {
       if(res.data.length == 1)
       {
+        app.globalData.campus = res.data[0].campus
+        that.setData({
+          index: res.data[0].campus,
+        })
         if( now<= res.data[0].ban_time)
         {
           wx.redirectTo({
             url: '../banned/banned',
           })
         }
-        app.globalData.campus=res.data[0].campus
       }
       else
       {

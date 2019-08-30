@@ -1,6 +1,15 @@
 <!--miniprogram/pages/temp_deliver/temp_deliver.wxml-->
 <view wx:if="{{order_list.length == 0}}">
-  当前暂无订单可接
+  <i-row class="">
+    <i-col span="24">
+      <view style="height:300rpx"></view>
+    </i-col>
+  </i-row>
+  <view class="void_content">
+  <image src="empty.png" class="void_pic"></image>
+  <view class="main_text">当前暂无订单可接</view>
+  <view class="sub_text">去发单让这里热闹起来</view>
+  </view>
 </view>
 <view wx:for="{{order_list}}">
   <view wx:if="{{item.type==1}}">
@@ -47,7 +56,7 @@
             </i-col>
           </i-col>
           <i-col span="8">
-           <i-button bindtap="submmit" type="info" id="¥{{item._id}}">接单</i-button>
+            <i-button bindtap="submmit" type="info" id="¥{{item._id}}">接单</i-button>
           </i-col>
         </i-row>
       </view>

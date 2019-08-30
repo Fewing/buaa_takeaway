@@ -8,7 +8,8 @@
     "pages/customize/customize",
     "pages/meal/meal",
     "pages/temp_deliver/temp_deliver",
-    "pages/order_list/order_list"
+    "pages/order_list/order_list",
+    "pages/modify_info/modify_info"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -41,5 +42,8 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "navigateToMiniProgramAppIdList": [
+    "wx18a2ac992306a5a4"
+  ]
 }

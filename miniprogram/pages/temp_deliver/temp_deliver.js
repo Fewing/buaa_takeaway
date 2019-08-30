@@ -26,8 +26,8 @@ Page({
           status: "0",
         },
         {
-          //_openid: com.neq(app.globalData.openid),
-          campus:com.eq(app.globalData.campus),
+          //_openid: com.neq(app.globalData.openid), //屏蔽自身订单
+          campus:com.eq(app.globalData.campus), //校区
         }
       ])).orderBy('createtime', 'desc')
       .get()

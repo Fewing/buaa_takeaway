@@ -1,0 +1,32 @@
+/* miniprogram/pages/modify_info/modify_info.wxss */
+page {
+  background: #f6f6f6;
+  display: block;
+}
+.top {
+  flex-direction: row;
+  height: 10rpx;
+  color: #1c2438;
+}
+
+.submit_button {
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  white-space: nowrap;
+  user-select: none;
+  font-size: 14px;
+  border-radius: 2px;
+  border: 0 ;
+  position: relative;
+  text-decoration: none;
+  height: 44px;
+  line-height: 44px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  color:white;
+  margin: 20px;
+  background:#2d8cf0
+
+}

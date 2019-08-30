@@ -50,6 +50,7 @@ page {
 
 .dinning_content {
 }
+
 .customize_content::before {
   content: '';
   position: absolute;
@@ -67,16 +68,37 @@ page {
   border-bottom-width: 1px;
 }
 
-customize_content
-{
-
+customize_content {
 }
-.list_cell
-{
+
+.list_cell {
   font-size: 16px;
   padding-bottom: 5px;
 }
-.remark_content
-{
+
+.remark_content {
   height: 85rpx;
+}
+
+.void_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.void_pic {
+  width: 128px;
+  height: 128px;
+}
+.main_text
+{
+  font-size: 20px;
+  margin-bottom: 10rpx;
+}
+.sub_text
+{
+  font-size: 14px;
+  color: #80848f;
 }

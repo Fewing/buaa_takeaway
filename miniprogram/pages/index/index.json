@@ -1,5 +1,13 @@
 {
   "usingComponents": {
-    "i-button": "../../dist/button/index"
+    "i-button": "../../dist/button/index",
+    "i-card": "../../dist/card/index",
+    "i-row": "../../dist/row/index",
+    "i-col": "../../dist/col/index",
+    "i-icon": "../../dist/icon/index",
+    "wux-cell-group": "../../wu_dist/cell-group/index",
+    "wux-cell": "../../wu_dist/cell/index",
+    "wux-fab-button": "../../wu_dist/fab-button/index",
+    "wux-icon": "../../wu_dist/icon/index"
   }
 }

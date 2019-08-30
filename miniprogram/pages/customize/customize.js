@@ -163,7 +163,7 @@ Page({
             showCancel: false,
             success: function () {
               wx.switchTab({
-                url: '../my_info/my_info',
+                url: '../order_list/order_list',
               })
             },
           })

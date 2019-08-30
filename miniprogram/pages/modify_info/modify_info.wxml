@@ -1,0 +1,26 @@
+<!--miniprogram/pages/modify_info/modify_info.wxml-->
+<i-row>
+  <i-col span="24" i-class="col-class">
+    <i-row>
+      <i-col span="22" i-class="col-class" offset="1">
+        <view class="top"></view>
+        <text style="color:#1c2438">信息修改</text>
+        <view style="height:10rpx"></view>
+        <i-panel style="padding=10rpx">
+          <i-cell title="当前校区">
+            <view slot="footer" style="color:#2d8cf0">
+              <picker bindchange="bindPickerChange" value="{{index}}" range="{{campus}}">
+                <view >
+                  {{campus[index]}}
+                </view>
+              </picker>
+            </view>
+          </i-cell>
+          <i-input value="{{ phone }}" type="number" title="联系电话" placeholder="" maxlength="50" bind:change="update_phone" right />
+          <i-input value="{{ deliver_address }}" type="text" title="送货地址" maxlength="50" bind:change="update_deliver_address" right/>
+        </i-panel>
+        <i-button bind:click="modify" type="info">修改</i-button>
+      </i-col>
+    </i-row>
+  </i-col>
+</i-row>
