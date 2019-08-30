@@ -5,6 +5,18 @@
 </wux-tabs>
 <swiper current="{{ index }}" bindchange="onSwiperChange" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
   <swiper-item>
+    <view wx:if="{{order_list.length == 0}}">
+      <i-row class="">
+        <i-col span="24">
+          <view style="height:300rpx"></view>
+        </i-col>
+      </i-row>
+      <view class="void_content">
+        <image src="empty.png" class="void_pic"></image>
+        <view class="main_text">你还没有发布过订单哦</view>
+        <view class="sub_text">去发布你的第一单吧</view>
+      </view>
+    </view>
     <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
       <view>
         <view style="height:30rpx"></view>
@@ -159,6 +171,18 @@
     </scroll-view>
   </swiper-item>
   <swiper-item>
+    <view wx:if="{{deliver_list.length == 0}}">
+      <i-row class="">
+        <i-col span="24">
+          <view style="height:300rpx"></view>
+        </i-col>
+      </i-row>
+      <view class="void_content">
+        <image src="empty.png" class="void_pic"></image>
+        <view class="main_text">你还没有接过单哦</view>
+        <view class="sub_text">去接个单试试吧</view>
+      </view>
+    </view>
     <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscrolltolower="scrollbot">
       <view>
         <view style="height:30rpx"></view>

@@ -39,11 +39,6 @@
           <i-button bind:click="to_customize" type="success">自由任务</i-button>
         </view>
       </i-col>
-      <i-col span="12" i-class="col-class">
-        <view class="">
-          <i-button bind:click="to_test" type="success">测试</i-button>
-        </view>
-      </i-col>
     </i-row>
   </view>
 </i-card>

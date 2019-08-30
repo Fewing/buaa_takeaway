@@ -26,7 +26,7 @@ Page({
           status: "0",
         },
         {
-          //_openid: com.neq(app.globalData.openid), //屏蔽自身订单
+          _openid: com.neq(app.globalData.openid), //屏蔽自身订单
           campus:com.eq(app.globalData.campus), //校区
         }
       ])).orderBy('createtime', 'desc')

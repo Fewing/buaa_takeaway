@@ -8,7 +8,7 @@
   <view class="void_content">
   <image src="empty.png" class="void_pic"></image>
   <view class="main_text">当前暂无订单可接</view>
-  <view class="sub_text">去发单让这里热闹起来</view>
+  <view class="sub_text">去发单让这里热闹起来吧</view>
   </view>
 </view>
 <view wx:for="{{order_list}}">

@@ -80,3 +80,25 @@ customize_content
 {
   height: 85rpx;
 }
+.void_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.void_pic {
+  width: 128px;
+  height: 128px;
+}
+.main_text
+{
+  font-size: 20px;
+  margin-bottom: 10rpx;
+}
+.sub_text
+{
+  font-size: 14px;
+  color: #80848f;
+}
