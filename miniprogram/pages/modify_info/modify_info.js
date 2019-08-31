@@ -71,13 +71,15 @@ Page({
       title: '请稍后',
       mask: true,
     })
+    var temp=parseInt(that.data.index)
     db.collection('user_info').doc(id).update({
       data: {
-        campus: that.data.index,
+        campus: temp,
         address: that.data.deliver_address,
         phone: that.data.phone
       },
     }).then(
+      app.globalData.campus=temp,
       wx.hideLoading(),
       wx.switchTab({
         url: '../my_info/my_info',

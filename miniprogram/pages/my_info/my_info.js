@@ -39,7 +39,7 @@ Page({
       _openid: app.globalData.openid
     }).get().then(res => {
       this.setData({
-        index: res.data[0].campus,
+        index: app.globalData.campus,
         phone: res.data[0].phone,
         deliver_address: res.data[0].address,
       })
