@@ -56,8 +56,9 @@ Page({
     })
   },
   bindPickerChange: function (e) {
+    var temp = parseInt(e.detail.value)
     this.setData({
-      campus_index: e.detail.value
+      campus_index: temp
     })
   },
   regist: function (e) {
