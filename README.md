@@ -43,7 +43,7 @@
 
 如有兴趣加入该项目可发送邮件到 yangzheyu00@hotmail.com
 
-#### 授权
+#### License
 
 [GPLv3]
 
