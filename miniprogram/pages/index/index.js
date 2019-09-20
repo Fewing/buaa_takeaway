@@ -114,7 +114,7 @@ Page({
       else
       {
         wx.redirectTo({
-          url: '../regist/regist',
+          url: '../to_regist/to_regist',
         })
       }
     })
