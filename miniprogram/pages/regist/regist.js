@@ -108,7 +108,7 @@ Page({
     })
     var that=this
     wx.request({
-      url: 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=O5b8MFdxYncpjmiNGUrbZqtF&client_secret=GyEBap97oyYSICfiF6Vp87YtaSPks5Ol&',
+      url: 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=xxxx&client_secret=xxxx',//获取百度云平台token，请将此处替换为你自己的获取链接
       success(res) {
         var access_token = res.data.access_token
         wx.request({
