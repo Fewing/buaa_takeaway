@@ -51,19 +51,6 @@
     <view class="weui-cell weui-cell_input weui-cell_vcode"></view>
     <view class="weui-cells__tips">这些信息将用于自动填充</view>
   </view>
-  <view class="uploadimage">
-    <image src="{{card_image}}" class="uploadimage" mode="aspectFit" ></image>
-  </view>
-  <view class="weui-cells__tips" style="color:red">请上传校园卡人脸页图片完成验证(目前仅适用于北航本科生)</view>
-  <view class="page">
-    <view class="page">
-      <view class="page__bd">
-        <view class="weui-btn-area">
-          <button class="weui-btn" type="default" bindtap="doUpload">上传图片</button>
-        </view>
-      </view>
-    </view>
-  </view>
   <view class="page">
     <view class="page">
       <view class="page__bd">

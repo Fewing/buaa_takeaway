@@ -65,7 +65,6 @@
     <i-row>
       <i-col span="24" i-class="col-class">
         <view class="question_card">
-            <wux-cell title="使用说明" is-link></wux-cell>
             <wux-cell title="联系我们" open-type="contact" is-link></wux-cell>
             <wux-cell title="意见反馈" open-type="feedback" is-link></wux-cell>
         </view>

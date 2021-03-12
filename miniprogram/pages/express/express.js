@@ -75,6 +75,14 @@ Page({
   },
   order_submit: function (e) {
     const that=this
+    if (app.globalData.login == false) {
+      wx.showModal({
+        title: '未注册',
+        content: '注册后才能创建任务',
+        showCancel: false,
+      })
+      return
+    }
     if ( this.data.company== "") {
       wx.showModal({
         title: '错误',
@@ -127,7 +135,6 @@ Page({
       title: '请稍后',
       mask: 'true',
     })
-    var deliver_date = new Date();
     db.collection('order').add(
       {
         data: {

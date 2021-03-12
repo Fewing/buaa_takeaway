@@ -30,6 +30,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    if (app.globalData.login == false) {
+      wx.showModal({
+        title: '未注册',
+        content: '您还没有注册航概校园邦，是否前往注册',
+        success (res) {
+          if (res.confirm) {
+            wx.redirectTo({
+              url: '../to_regist/to_regist',
+            })
+          }
+        }
+      })
+      return
+    }
     wx.showLoading({
       title: '请稍后',
       mask: true,

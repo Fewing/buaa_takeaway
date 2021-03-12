@@ -149,6 +149,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    if (app.globalData.login == false) {
+      wx.showModal({
+        title: '加载失败',
+        content: '未注册',
+        showCancel: false,
+      })
+      return
+    }
     wx.showLoading({
       title: '加载中',
     })

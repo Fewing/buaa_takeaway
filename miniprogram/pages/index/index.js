@@ -14,7 +14,7 @@ Page({
       }
     });
   },
-  to_express: function(){
+  to_express: function () {
     wx.navigateTo({
       url: '../express/express'
     })
@@ -30,12 +30,19 @@ Page({
     })
   },
   to_deliver: function () {
+    if (app.globalData.login == false) {
+      wx.showModal({
+        title: '未注册',
+        content: '注册后才能接单',
+        showCancel: false,
+      })
+      return
+    }
     wx.navigateTo({
       url: '../temp_deliver/temp_deliver'
     })
   },
-  to_order_list: function()
-  {
+  to_order_list: function () {
     wx.navigateTo({
       url: '../order_list/order_list'
     })
@@ -55,21 +62,21 @@ Page({
     }
   },
   data: {
-    campus: ["学院路校区","沙河校区"],
+    campus: ["学院路校区", "沙河校区"],
     index: "",
     buttons: [
-    {
-      openType: 'share',
-      label: 'Share',
-      icon: "../../index/share.svg"
-    },
-    {
-      icon: "../../index/appreciate.svg",
-      label: 'appreciate',
-    },
+      {
+        openType: 'share',
+        label: 'Share',
+        icon: "../../index/share.svg"
+      },
+      {
+        icon: "../../index/appreciate.svg",
+        label: 'appreciate',
+      },
     ]
   },
-  onLoad: function() {
+  onLoad: function () {
     wx.showLoading({
       title: '请稍后',
       mask: true,
@@ -94,27 +101,33 @@ Page({
    */
   onShow: function () {
     var now = new Date()
-    var that =this
+    var that = this
     db.collection('user_info').where({
       _openid: app.globalData.openid
     }).get().then(res => {
-      if(res.data.length == 1)
-      {
+      if (res.data.length == 1) {
         app.globalData.campus = res.data[0].campus
+        app.globalData.login = true
         that.setData({
           index: res.data[0].campus,
         })
-        if( now<= res.data[0].ban_time)
-        {
+        if (now <= res.data[0].ban_time) {
           wx.redirectTo({
             url: '../banned/banned',
           })
         }
       }
-      else
-      {
-        wx.redirectTo({
-          url: '../to_regist/to_regist',
+      else {
+        wx.showModal({
+          title: '未注册',
+          content: '您还没有注册航概校园邦，是否前往注册',
+          success (res) {
+            if (res.confirm) {
+              wx.redirectTo({
+                url: '../to_regist/to_regist',
+              })
+            }
+          }
         })
       }
     })
